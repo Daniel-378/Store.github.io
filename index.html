@@ -1,91 +1,229 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diamond Purchase Offers</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        .card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            padding: 15px;
-            width: calc(25% - 20px);
-            text-align: center;
-        }
-        .hot {
-            background-color: #ffdd57;
-            padding: 5px;
-            border-radius: 5px;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-        .price {
-            font-size: 1.5em;
-            color: #e91e63;
-        }
-        .old-price {
-            text-decoration: line-through;
-            color: gray;
-        }
-        .rewards {
-            margin-top: 10px;
-            font-weight: bold;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Diamond Top-Up Portal</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+    min-height: 100vh;
+    color: #fff;
+  }
+  header {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  }
+  header h1 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 2.5rem;
+    letter-spacing: 1.5px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  }
+  main {
+    max-width: 480px;
+    margin: 2rem auto 4rem auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  }
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    user-select: none;
+  }
+  input[type="text"], select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    outline: none;
+  }
+  input[type="text"]:focus, select:focus {
+    box-shadow: 0 0 8px #ffd700;
+    background-color: rgba(255 255 255 / 0.25);
+    color: #fff;
+  }
+  .package-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .package {
+    background: rgba(255 255 255 / 0.15);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-align: center;
+    cursor: pointer;
+    padding: 1rem 0.5rem;
+    user-select: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  .package:hover, .package.selected {
+    background: #ffd700;
+    color: #222;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px #ffd700;
+  }
+  .package .diamonds {
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+  .package .price {
+    font-weight: 600;
+    margin-top: 0.3rem;
+    font-size: 1rem;
+    color: #222;
+  }
+  button {
+    background: #ffd700;
+    border: none;
+    font-weight: 600;
+    color: #222;
+    padding: 1rem;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 6px 12px #9e7a00;
+    transition: background 0.3s ease;
+  }
+  button:hover {
+    background: #ffec70;
+  }
+  footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    padding: 1rem 0;
+    user-select: none;
+  }
+  .message {
+    margin-top: 1rem;
+    font-weight: 600;
+    text-align: center;
+    user-select: none;
+  }
+</style>
 </head>
 <body>
+  <header>
+    <h1>Diamond Top-Up Portal</h1>
+  </header>
 
-    <h1>Penawaran Pembelian Diamond</h1>
-    <div class="container">
-        <div class="card">
-            <div class="hot">HOT</div>
-            <h2>100 Diamonds (50+50)</h2>
-            <p>pengisian pertama!</p>
-            <div class="price">Rp. 14.203</div>
-            <div class="old-price">Rp. 16.351</div>
-            <div class="rewards">71 Rewards</div>
-        </div>
+  <main>
+    <form id="topupForm">
+      <label for="gameId">Game User ID</label>
+      <input type="text" id="gameId" name="gameId" placeholder="Enter your game ID" required pattern="[A-Za-z0-9_-]{4,20}" title="4-20 characters: letters, numbers, underscore or hyphen" />
 
-        <div class="card">
-            <div class="hot">HOT</div>
-            <h2>300 Diamonds (150+150)</h2>
-            <p>pengisian pertama!</p>
-            <div class="price">Rp. 42.365</div>
-            <div class="old-price">Rp. 48.559</div>
-            <div class="rewards">211 Rewards</div>
+      <label>Select Diamond Package</label>
+      <div class="package-grid" id="packageGrid">
+        <div class="package" data-diamonds="50" data-price="5000">
+          <div class="diamonds">50 Diamonds</div>
+          <div class="price">Rp 5,000</div>
         </div>
+        <div class="package" data-diamonds="100" data-price="9500">
+          <div class="diamonds">100 Diamonds</div>
+          <div class="price">Rp 9,500</div>
+        </div>
+        <div class="package" data-diamonds="250" data-price="22500">
+          <div class="diamonds">250 Diamonds</div>
+          <div class="price">Rp 22,500</div>
+        </div>
+        <div class="package" data-diamonds="500" data-price="44000">
+          <div class="diamonds">500 Diamonds</div>
+          <div class="price">Rp 44,000</div>
+        </div>
+        <div class="package" data-diamonds="1000" data-price="85000">
+          <div class="diamonds">1000 Diamonds</div>
+          <div class="price">Rp 85,000</div>
+        </div>
+      </div>
 
-        <div class="card">
-            <div class="hot">HOT</div>
-            <h2>500 Diamonds (250+250)</h2>
-            <p>pengisian pertama!</p>
-            <div class="price">Rp. 70.632</div>
-            <div class="old-price">Rp. 80.270</div>
-            <div class="rewards">353 Rewards</div>
-        </div>
-        
-        <div class="card">
-            <div class="hot">HOT</div>
-            <h2>1000 Diamonds (500+500)</h2>
-            <p>pengisian pertama!</p>
-            <div class="price">Rp. 142.025</div>
-            <div class="old-price">Rp. 167.973</div>
-            <div class="rewards">710 Rewards</div>
-        </div>
-    </div>
+      <button type="submit">Top Up Now</button>
+      <div class="message" id="messageArea"></div>
+    </form>
+  </main>
 
+  <footer>
+    &copy; 2024 DiamondTopUp. All rights reserved.
+  </footer>
+
+  <script>
+    (function(){
+      const packageGrid = document.getElementById('packageGrid');
+      const packages = packageGrid.querySelectorAll('.package');
+      let selectedPackage = null;
+
+      packages.forEach(pkg => {
+        pkg.addEventListener('click', () => {
+          // Deselect all
+          packages.forEach(p => p.classList.remove('selected'));
+          // Select clicked
+          pkg.classList.add('selected');
+          selectedPackage = pkg;
+          clearMessage();
+        });
+      });
+
+      const form = document.getElementById('topupForm');
+      const messageArea = document.getElementById('messageArea');
+
+      function showMessage(msg, success=true) {
+        messageArea.textContent = msg;
+        messageArea.style.color = success ? '#0f0' : '#f44';
+      }
+
+      function clearMessage() {
+        messageArea.textContent = '';
+      }
+
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        if (!selectedPackage) {
+          showMessage('Please select a diamond package to top up.', false);
+          return;
+        }
+        const gameId = form.gameId.value.trim();
+        if (!gameId) {
+          showMessage('Please enter your game user ID.', false);
+          return;
+        }
+        // Simple pattern check (could rely on input pattern attribute)
+        const idPattern = /^[A-Za-z0-9_-]{4,20}$/;
+        if (!idPattern.test(gameId)) {
+          showMessage('Game ID must be 4-20 characters: letters, numbers, underscore or hyphen.', false);
+          return;
+        }
+        const diamonds = selectedPackage.getAttribute('data-diamonds');
+        const price = selectedPackage.getAttribute('data-price');
+
+        // Simulate top-up processing delay
+        showMessage('Processing your top-up...', true);
+        setTimeout(() => {
+          showMessage(`Success! ${diamonds} diamonds sent to User ID "${gameId}". Total cost: Rp ${Number(price).toLocaleString('id-ID')}.`);
+          form.reset();
+          selectedPackage.classList.remove('selected');
+          selectedPackage = null;
+        }, 1500);
+      });
+
+    })();
+  </script>
 </body>
 </html>
+
