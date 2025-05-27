@@ -1,554 +1,511 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Elegant Diamonds - Luxury & Brilliance</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300;600&display=swap');
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GameTop - Ultimate Game Top-Up</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@400;600&display=swap');
+&nbsp;
+&nbsp;
 
-    :root {
-      --color-dark: #1a1623;
-      --color-white: #fdfcfb;
-      --color-gold-light: #e7c96d;
-      --color-gold-dark: #b9973e;
-      --color-gray-light: #eee8e4;
-      --font-serif: 'Playfair Display', serif;
-      --font-sans: 'Poppins', sans-serif;
+  :root {
+    --dark-bg: #0a0a23;
+    --neon-blue: #00f0ff;
+    --neon-pink: #ff0099;
+    --neon-purple: #bb00ff;
+    --text-light: #e6e6ff;
+    --text-dark: #121224;
+    --font-header: 'Orbitron', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+  }
+&nbsp;
+&nbsp;
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+&nbsp;
+&nbsp;
+
+  body {
+    background: var(--dark-bg);
+    color: var(--text-light);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+&nbsp;
+&nbsp;
+
+  header {
+    position: sticky;
+    top: 0;
+    background: rgba(15,15,50,0.95);
+    backdrop-filter: blur(10px);
+    padding: 1.3rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 0 15px var(--neon-purple);
+  }
+&nbsp;
+&nbsp;
+
+  header .logo {
+    font-family: var(--font-header);
+    font-size: 2rem;
+    color: var(--neon-pink);
+    letter-spacing: 5px;
+    user-select: none;
+    cursor: default;
+    text-transform: uppercase;
+    text-shadow:
+      0 0 8px var(--neon-pink),
+      0 0 20px var(--neon-pink),
+      0 0 30px var(--neon-pink);
+  }
+&nbsp;
+&nbsp;
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.2rem;
+  }
+&nbsp;
+&nbsp;
+
+  nav ul li a {
+    color: var(--text-light);
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    font-size: 1rem;
+    text-decoration: none;
+    position: relative;
+    padding: 0.25rem 0;
+    transition: color 0.3s ease;
+  }
+  nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--neon-pink);
+    border-radius: 1px;
+    transition: width 0.3s ease;
+  }
+  nav ul li a:hover,
+  nav ul li a:focus {
+    color: var(--neon-pink);
+  }
+  nav ul li a:hover::after,
+  nav ul li a:focus::after {
+    width: 100%;
+  }
+&nbsp;
+&nbsp;
+
+  /* Hero Section */
+  .hero {
+    position: relative;
+    min-height: 80vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 2rem;
+    background: url('https://images.unsplash.com/photo-1605362482129-34cd3955d21b?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 35, 0.8);
+    z-index: 0;
+    mix-blend-mode: multiply;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .hero-content h1 {
+    font-family: var(--font-header);
+    font-size: 4.5rem;
+    color: var(--neon-blue);
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    margin-bottom: 1rem;
+    text-shadow:
+      0 0 6px var(--neon-blue),
+      0 0 20px var(--neon-blue),
+      0 0 40px var(--neon-blue);
+    animation: flicker 3s infinite alternate;
+  }
+  .hero-content p {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 3rem;
+    color: var(--text-light);
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+  }
+&nbsp;
+&nbsp;
+
+  @keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      opacity: 1;
+      text-shadow:
+      0 0 6px var(--neon-blue),
+      0 0 20px var(--neon-blue),
+      0 0 40px var(--neon-blue);
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: var(--font-sans);
-      background-color: var(--color-gray-light);
-      color: var(--color-dark);
-      line-height: 1.6;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
-
-    /* Sticky Transparent Navbar */
-    nav {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      background: rgba(26, 22, 35, 0.85);
-      backdrop-filter: saturate(180%) blur(15px);
-      z-index: 1000;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 3rem;
-    }
-
-    nav .logo {
-      font-family: var(--font-serif);
-      font-size: 1.8rem;
-      color: var(--color-gold-light);
-      letter-spacing: 4px;
-      cursor: default;
-      user-select: none;
-      text-transform: uppercase;
-      font-weight: 700;
-      text-shadow: 0 0 4px rgba(231, 201, 109, 0.8);
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2.5rem;
-    }
-
-    nav ul li a {
-      color: var(--color-white);
-      font-weight: 600;
-      font-size: 1rem;
-      letter-spacing: 1px;
-      text-decoration: none;
-      position: relative;
-      padding: 0.25rem 0;
-      transition: color 0.3s ease;
-    }
-
-    nav ul li a::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0%;
-      height: 2px;
-      background: var(--color-gold-light);
-      transition: width 0.3s ease;
-      border-radius: 1px;
-    }
-
-    nav ul li a:hover,
-    nav ul li a:focus {
-      color: var(--color-gold-light);
-    }
-
-    nav ul li a:hover::after,
-    nav ul li a:focus::after {
-      width: 100%;
-    }
-
-    /* Hero Section */
-    header {
-      height: 90vh;
-      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: var(--color-white);
-      padding: 0 2rem;
-      overflow: hidden;
-    }
-
-    /* Dark overlay */
-    header::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(26,22,35,0.75);
-      z-index: 0;
-    }
-
-    header .hero-content {
-      position: relative;
-      max-width: 700px;
-      z-index: 1;
-      font-family: var(--font-serif);
-    }
-
-    header h1 {
-      font-size: 4rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      color: var(--color-gold-light);
-      letter-spacing: 8px;
-      margin-bottom: 1rem;
-      text-shadow: 0 0 15px rgba(231, 201, 109, 0.9);
-    }
-
-    header p {
-      font-size: 1.5rem;
-      font-weight: 300;
-      color: var(--color-white);
-      margin-bottom: 2.5rem;
-      text-shadow: 0 0 8px rgba(0,0,0,0.7);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold-dark));
-      color: var(--color-dark);
-      border: none;
-      font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: 1.1rem;
-      padding: 0.85rem 2.5rem;
-      text-transform: uppercase;
-      border-radius: 40px;
-      cursor: pointer;
-      box-shadow: 0 6px 15px rgba(231, 201, 109, 0.8);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
-      letter-spacing: 2px;
-    }
-
-    .btn-primary:hover,
-    .btn-primary:focus {
-      transform: scale(1.05);
-      box-shadow: 0 8px 30px rgba(231, 201, 109, 1);
-      outline: none;
-    }
-
-    /* Sparkle effect using subtle animated diamond shapes */
-    .sparkle {
-      position: absolute;
-      border-radius: 50%;
-      background: radial-gradient(white, rgba(231, 201, 109, 0.8));
-      filter: drop-shadow(0 0 8px rgba(231, 201, 109, 0.9));
-      animation: sparkle-move 6s linear infinite;
+    20%, 22%, 24%, 55% {
       opacity: 0.8;
-      z-index: 0;
+      text-shadow: none;
     }
-    .sparkle:nth-child(1) {
-      width: 12px;
-      height: 12px;
-      top: 20%;
-      left: 15%;
-      animation-delay: 0s;
-    }
-    .sparkle:nth-child(2) {
-      width: 10px;
-      height: 10px;
-      top: 40%;
-      left: 80%;
-      animation-delay: 2s;
-    }
-    .sparkle:nth-child(3) {
-      width: 14px;
-      height: 14px;
-      top: 65%;
-      left: 30%;
-      animation-delay: 4s;
-    }
-    @keyframes sparkle-move {
-      0% {transform: translate(0, 0) rotate(0deg) scale(1);}
-      50% {transform: translate(15px, 15px) rotate(180deg) scale(1.25);}
-      100% {transform: translate(0, 0) rotate(360deg) scale(1);}
-    }
+  }
+&nbsp;
+&nbsp;
 
-    main {
-      max-width: 1150px;
-      margin: -7rem auto 4rem;
-      padding: 0 1.5rem 5rem;
-      background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 30px 50px rgba(0,0,0,0.12);
-      position: relative;
-      z-index: 10;
-    }
+  .btn-primary {
+    background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
+    border: none;
+    color: var(--text-light);
+    font-weight: 700;
+    font-size: 1.25rem;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow:
+      0 0 8px var(--neon-pink),
+      0 0 20px var(--neon-purple);
+    transition: box-shadow 0.3s ease, transform 0.25s ease;
+    user-select: none;
+    user-drag: none;
+  }
+  .btn-primary:hover,
+  .btn-primary:focus {
+    transform: scale(1.05);
+    box-shadow:
+      0 0 15px var(--neon-pink),
+      0 0 40px var(--neon-purple);
+    outline: none;
+  }
+&nbsp;
+&nbsp;
 
-    /* Products Section */
-    section.products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(260px, 1fr));
-      gap: 2.75rem;
-      margin-bottom: 4rem;
-    }
+  /* Features Section */
+  .features {
+    max-width: 1100px;
+    margin: 5rem auto 4rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+&nbsp;
+&nbsp;
 
-    .product-card {
-      background: #fbf8f2;
-      border-radius: 15px;
-      box-shadow:
-        0 2px 10px rgba(0,0,0,0.08),
-        0 0 20px rgba(247, 222, 117, 0.25);
-      overflow: hidden;
-      display: flex;
+  .feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 18px;
+    border: 1.8px solid var(--neon-purple);
+    color: var(--text-light);
+    padding: 2rem;
+    flex: 1 1 220px;
+    max-width: 280px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+    cursor: default;
+  }
+  .feature-card:hover,
+  .feature-card:focus {
+    box-shadow:
+      0 0 15px var(--neon-pink),
+      0 0 40px var(--neon-purple);
+    transform: translateY(-8px);
+    outline: none;
+  }
+&nbsp;
+&nbsp;
+
+  .feature-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+    fill: var(--neon-pink);
+    filter: drop-shadow(0 0 5px var(--neon-pink));
+  }
+  .feature-card h3 {
+    font-family: var(--font-header);
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+  .feature-card p {
+    font-weight: 400;
+    font-size: 1rem;
+  }
+&nbsp;
+&nbsp;
+
+  /* Popular Games Section */
+  .popular-games {
+    max-width: 1100px;
+    margin: 5rem auto 5rem;
+    padding: 0 1rem;
+    text-align: center;
+  }
+  .popular-games h2 {
+    font-family: var(--font-header);
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: var(--neon-purple);
+    user-select: none;
+    text-shadow:
+      0 0 6px var(--neon-purple),
+      0 0 20px var(--neon-purple);
+  }
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(140px, 1fr));
+    gap: 2.2rem;
+    justify-items: center;
+  }
+&nbsp;
+&nbsp;
+
+  .game-card {
+    position: relative;
+    width: 140px;
+    border-radius: 15px;
+    padding: 1.25rem;
+    background: rgba(255,255,255,0.05);
+    border: 2px solid transparent;
+    box-shadow:
+      0 0 10px rgba(0, 255, 255, 0.1);
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    user-select: none;
+    outline-offset: 4px;
+  }
+  .game-card:hover,
+  .game-card:focus {
+    border-color: var(--neon-pink);
+    box-shadow:
+      0 0 25px var(--neon-pink),
+      0 0 50px var(--neon-purple);
+    transform: scale(1.1);
+    outline: none;
+  }
+  .game-card img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    user-select: none;
+    user-drag: none;
+  }
+  .game-card p {
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: var(--neon-blue);
+    text-shadow:
+      0 0 6px var(--neon-blue),
+      0 0 15px var(--neon-blue);
+  }
+&nbsp;
+&nbsp;
+
+  /* Call to Action Section */
+  .cta {
+    max-width: 700px;
+    margin: 4rem auto 6rem;
+    text-align: center;
+  }
+  .cta h2 {
+    font-family: var(--font-header);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--neon-pink);
+    text-shadow:
+      0 0 10px var(--neon-pink),
+      0 0 30px var(--neon-pink);
+    user-select: none;
+  }
+  .cta p {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 2.5rem;
+    color: var(--text-light);
+  }
+&nbsp;
+&nbsp;
+
+  /* Footer */
+  footer {
+    background: rgba(15, 15, 50, 0.95);
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    user-select: none;
+  }
+  footer a {
+    color: var(--neon-purple);
+    font-weight: 600;
+    text-decoration: none;
+    margin: 0 0.8rem;
+    transition: color 0.3s ease;
+  }
+  footer a:hover,
+  footer a:focus {
+    color: var(--neon-pink);
+    outline: none;
+    text-decoration: underline;
+  }
+&nbsp;
+&nbsp;
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .features {
       flex-direction: column;
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-      cursor: pointer;
-      position: relative;
+      align-items: center;
     }
-
-    .product-card:hover,
-    .product-card:focus-within {
-      transform: translateY(-10px);
-      box-shadow:
-        0 20px 40px rgba(0,0,0,0.12),
-        0 0 35px rgba(247, 222, 117, 0.5);
-      outline: none;
-      z-index: 15;
+    .hero-content h1 {
+      font-size: 3.5rem;
     }
-
-    .product-image {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-      border-bottom-left-radius: 15px;
-      border-bottom-right-radius: 15px;
+    .popular-games h2 {
+      font-size: 2.5rem;
     }
+  }
+&nbsp;
+&nbsp;
 
-    .product-card:hover .product-image,
-    .product-card:focus-within .product-image {
-      transform: scale(1.07);
+  @media (max-width: 480px) {
+    .hero-content h1 {
+      font-size: 2.8rem;
     }
-
-    .product-info {
-      padding: 1.5rem 1.8rem 2rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    nav ul {
+      gap: 1.2rem;
     }
-
-    .product-info h3 {
-      font-family: var(--font-serif);
-      font-weight: 700;
-      font-size: 1.4rem;
-      color: var(--color-dark);
-      margin-bottom: 0.35rem;
-      user-select: none;
-    }
-
-    .product-info p.price {
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: var(--color-gold-dark);
-      margin-bottom: 1.5rem;
-      user-select: none;
-    }
-
-    .product-info button {
-      background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold-dark));
-      border: none;
-      padding: 0.7rem 2rem;
-      border-radius: 40px;
-      font-weight: 600;
-      color: var(--color-dark);
-      cursor: pointer;
-      font-size: 1rem;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-      align-self: flex-start;
-      letter-spacing: 1px;
-      font-family: var(--font-sans);
-      user-select: none;
-      box-shadow: 0 4px 15px rgba(231, 201, 109, 0.7);
-    }
-
-    .product-info button:hover,
-    .product-info button:focus {
-      box-shadow: 0 8px 25px rgba(231, 201, 109, 1);
-      transform: scale(1.05);
-      outline: none;
-    }
-
-    /* About Section */
-    section.about {
-      max-width: 700px;
-      margin: 0 auto 4rem;
-      font-family: var(--font-serif);
-      color: var(--color-dark);
-      text-align: center;
-    }
-
-    section.about h2 {
-      font-size: 3rem;
-      font-weight: 900;
-      letter-spacing: 3px;
-      margin-bottom: 1rem;
-      user-select: none;
-    }
-
-    section.about p {
-      font-weight: 300;
-      font-size: 1.3rem;
-      line-height: 1.9;
-      color: #3a3a3a;
-      user-select: none;
-      padding: 0 0.5rem;
-    }
-
-    /* Testimonials section */
-    section.testimonials {
-      background: var(--color-dark);
-      color: var(--color-gold-light);
-      padding: 3rem 2rem;
-      border-radius: 20px;
-      max-width: 850px;
-      margin: 0 auto 5rem;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-      font-style: italic;
-      font-weight: 400;
-      font-size: 1.2rem;
-      text-align: center;
-      position: relative;
-      font-family: var(--font-serif);
-      user-select: none;
-    }
-
-    section.testimonials::before {
-      content: "“";
-      font-size: 6rem;
-      color: rgba(231, 201, 109, 0.3);
-      position: absolute;
-      top: -40px;
-      left: 40px;
-      font-family: var(--font-serif);
-      font-weight: 900;
-      z-index: -1;
-    }
-
-    section.testimonials::after {
-      content: "”";
-      font-size: 6rem;
-      color: rgba(231, 201, 109, 0.3);
-      position: absolute;
-      bottom: -40px;
-      right: 40px;
-      font-family: var(--font-serif);
-      font-weight: 900;
-      z-index: -1;
-    }
-
-    /* Footer */
-    footer {
-      background-color: var(--color-dark);
-      color: var(--color-gray-light);
-      text-align: center;
-      padding: 2.2rem 1rem;
+    nav ul li a {
       font-size: 0.9rem;
-      letter-spacing: 1.5px;
-      font-family: var(--font-sans);
-      user-select: none;
     }
-
-    footer a {
-      color: var(--color-gold-light);
-      text-decoration: none;
-      font-weight: 600;
-      margin: 0 0.75rem;
-      transition: color 0.3s ease;
+    .games-grid {
+      grid-template-columns: repeat(auto-fit,minmax(120px, 1fr));
     }
-
-    footer a:hover,
-    footer a:focus {
-      color: var(--color-gold-dark);
-      text-decoration: underline;
-      outline: none;
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 3rem;
-      }
-      header p {
-        font-size: 1.2rem;
-      }
-      nav {
-        padding: 1rem 1.5rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      nav ul {
-        gap: 1.2rem;
-      }
-      nav ul li a {
-        font-size: 0.9rem;
-      }
-      main {
-        margin: -5rem 1rem 3rem;
-        padding: 2rem 1rem 4rem;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <nav role="navigation" aria-label="Primary navigation">
-    <div class="logo" aria-label="Elegant Diamonds logo">Elegant Diamonds</div>
+<header>
+  <div class="logo" aria-label="GameTop Logo">GameTop</div>
+  <nav aria-label="Primary navigation">
     <ul>
-      <li><a href="#products">Products</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#games">Games</a></li>
+      <li><a href="#cta">Get Started</a></li>
     </ul>
   </nav>
+</header>
+&nbsp;
+&nbsp;
 
-  <header role="banner">
-    <div class="hero-content">
-      <h1>Luxurious Brilliance</h1>
-      <p>Crafted Diamonds That Speak Elegance & Timeless Beauty</p>
-      <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})" aria-label="Shop Now">Shop Now</button>
+<section class="hero" role="banner" aria-label="Main introduction">
+  <div class="hero-content">
+    <h1>GameTop</h1>
+    <p>Instant, safe & easy game top-ups with exclusive deals for gamers worldwide</p>
+    <button class="btn-primary" onclick="alert('Redirecting to Top-Up Service')" aria-label="Start top-up now">Start Now</button>
+  </div>
+</section>
+&nbsp;
+&nbsp;
+
+<section id="features" class="features" aria-label="Key Features">
+  <article class="feature-card" tabindex="0">
+    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30"/></svg>
+    <h3>Instant Delivery</h3>
+    <p>Receive your game credits immediately with our lightning-fast service.</p>
+  </article>
+  <article class="feature-card" tabindex="0">
+    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true"><path d="M6 32h52"/></svg>
+    <h3>Secure Payments</h3>
+    <p>Top-up safely with trusted payment gateways and encrypted transactions.</p>
+  </article>
+  <article class="feature-card" tabindex="0">
+    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true"><path d="M20 44l12-24 12 24"/></svg>
+    <h3>Wide Game Selection</h3>
+    <p>We support popular games from all genres to meet all your gaming needs.</p>
+  </article>
+  <article class="feature-card" tabindex="0">
+    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6v52"/></svg>
+    <h3>24/7 Support</h3>
+    <p>Our dedicated support team is ready to help you anytime, anywhere.</p>
+  </article>
+</section>
+&nbsp;
+&nbsp;
+
+<section id="games" class="popular-games" aria-label="Popular games to top up">
+  <h2>Popular Games</h2>
+  <div class="games-grid">
+    <div class="game-card" tabindex="0" role="button" aria-label="Top up Mobile Legends">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/98/Mobile_Legends_logo.svg/120px-Mobile_Legends_logo.svg.png" alt="Mobile Legends Logo" />
+      <p>Mobile Legends</p>
     </div>
+    <div class="game-card" tabindex="0" role="button" aria-label="Top up PUBG Mobile">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/PUBG_Mobile_Logo.svg/120px-PUBG_Mobile_Logo.svg.png" alt="PUBG Mobile Logo" />
+      <p>PUBG Mobile</p>
+    </div>
+    <div class="game-card" tabindex="0" role="button" aria-label="Top up Free Fire">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/fa/Free_Fire_Logo.svg/120px-Free_Fire_Logo.svg.png" alt="Free Fire Logo" />
+      <p>Free Fire</p>
+    </div>
+    <div class="game-card" tabindex="0" role="button" aria-label="Top up Genshin Impact">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/dc/Genshin_Impact_logo.svg/120px-Genshin_Impact_logo.svg.png" alt="Genshin Impact Logo" />
+      <p>Genshin Impact</p>
+    </div>
+    <div class="game-card" tabindex="0" role="button" aria-label="Top up Call of Duty Mobile">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Call_of_Duty_Mobile_logo.svg/120px-Call_of_Duty_Mobile_logo.svg.png" alt="Call of Duty Mobile Logo" />
+      <p>Call of Duty Mobile</p>
+    </div>
+    <div class="game-card" tabindex="0" role="button" aria-label="Top up Roblox">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Roblox_Logo_2022.svg/120px-Roblox_Logo_2022.svg.png" alt="Roblox Logo" />
+      <p>Roblox</p>
+    </div>
+  </div>
+</section>
+&nbsp;
+&nbsp;
 
-    <div class="sparkle"></div>
-    <div class="sparkle"></div>
-    <div class="sparkle"></div>
-  </header>
+<section id="cta" class="cta" aria-label="Call To Action">
+  <h2>Level Up Your Game Now!</h2>
+  <p>Join thousands of gamers worldwide who trust GameTop for the fastest top-ups with exclusive deals.</p>
+  <button class="btn-primary" onclick="alert('Redirecting to registration page')" aria-label="Sign up now">Sign Up Now</button>
+</section>
+&nbsp;
+&nbsp;
 
-  <main>
-    <section class="products" id="products" aria-label="Diamond products">
-      <article tabindex="0" class="product-card" role="group" aria-labelledby="product1-title" aria-describedby="product1-price">
-        <img class="product-image" src="https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?auto=format&fit=crop&w=600&q=80" alt="Classic Round Diamond" loading="lazy"/>
-        <div class="product-info">
-          <h3 id="product1-title">Classic Round Diamond</h3>
-          <p id="product1-price" class="price">$4,500</p>
-          <button onclick="alert('Added Classic Round Diamond to cart')" aria-label="Buy Classic Round Diamond">Buy Now</button>
-        </div>
-      </article>
-
-      <article tabindex="0" class="product-card" role="group" aria-labelledby="product2-title" aria-describedby="product2-price">
-        <img class="product-image" src="https://images.unsplash.com/photo-1512256806717-2ca3b047a88e?auto=format&fit=crop&w=600&q=80" alt="Princess Cut Diamond" loading="lazy"/>
-        <div class="product-info">
-          <h3 id="product2-title">Princess Cut Diamond</h3>
-          <p id="product2-price" class="price">$5,200</p>
-          <button onclick="alert('Added Princess Cut Diamond to cart')" aria-label="Buy Princess Cut Diamond">Buy Now</button>
-        </div>
-      </article>
-
-      <article tabindex="0" class="product-card" role="group" aria-labelledby="product3-title" aria-describedby="product3-price">
-        <img class="product-image" src="https://images.unsplash.com/photo-1513027925551-485383505903?auto=format&fit=crop&w=600&q=80" alt="Emerald Cut Diamond" loading="lazy"/>
-        <div class="product-info">
-          <h3 id="product3-title">Emerald Cut Diamond</h3>
-          <p id="product3-price" class="price">$6,000</p>
-          <button onclick="alert('Added Emerald Cut Diamond to cart')" aria-label="Buy Emerald Cut Diamond">Buy Now</button>
-        </div>
-      </article>
-
-      <article tabindex="0" class="product-card" role="group" aria-labelledby="product4-title" aria-describedby="product4-price">
-        <img class="product-image" src="https://images.unsplash.com/photo-1571151629024-6fcd602d1316?auto=format&fit=crop&w=600&q=80" alt="Cushion Cut Diamond" loading="lazy"/>
-        <div class="product-info">
-          <h3 id="product4-title">Cushion Cut Diamond</h3>
-          <p id="product4-price" class="price">$5,800</p>
-          <button onclick="alert('Added Cushion Cut Diamond to cart')" aria-label="Buy Cushion Cut Diamond">Buy Now</button>
-        </div>
-      </article>
-
-      <article tabindex="0" class="product-card" role="group" aria-labelledby="product5-title" aria-describedby="product5-price">
-        <img class="product-image" src="https://images.unsplash.com/photo-1573496773371-1933f7b8f5f0?auto=format&fit=crop&w=600&q=80" alt="Oval Cut Diamond" loading="lazy"/>
-        <div class="product-info">
-          <h3 id="product5-title">Oval Cut Diamond</h3>
-          <p id="product5-price" class="price">$5,500</p>
-          <button onclick="alert('Added Oval Cut Diamond to cart')" aria-label="Buy Oval Cut Diamond">Buy Now</button>
-        </div>
-      </article>
-
-      <article tabindex="0" class="product-card" role="group" aria-labelledby="product6-title" aria-describedby="product6-price">
-        <img class="product-image" src="https://images.unsplash.com/photo-1523639469335-f52969455239?auto=format&fit=crop&w=600&q=80" alt="Marquise Cut Diamond" loading="lazy"/>
-        <div class="product-info">
-          <h3 id="product6-title">Marquise Cut Diamond</h3>
-          <p id="product6-price" class="price">$6,300</p>
-          <button onclick="alert('Added Marquise Cut Diamond to cart')" aria-label="Buy Marquise Cut Diamond">Buy Now</button>
-        </div>
-      </article>
-
-      <article tabindex="0" class="product-card" role="group" aria-labelledby="product7-title" aria-describedby="product7-price">
-        <img class="product-image" src="https://images.unsplash.com/photo-1577546445846-9d1fdb1d6174?auto=format&fit=crop&w=600&q=80" alt="Radiant Cut Diamond" loading="lazy"/>
-        <div class="product-info">
-          <h3 id="product7-title">Radiant Cut Diamond</h3>
-          <p id="product7-price" class="price">$5,900</p>
-          <button onclick="alert('Added Radiant Cut Diamond to cart')" aria-label="Buy Radiant Cut Diamond">Buy Now</button>
-        </div>
-      </article>
-
-      <article tabindex="0" class="product-card" role="group" aria-labelledby="product8-title" aria-describedby="product8-price">
-        <img class="product-image" src="https://images.unsplash.com/photo-1509440159598-cd801b9bf447?auto=format&fit=crop&w=600&q=80" alt="Heart Shaped Diamond" loading="lazy"/>
-        <div class="product-info">
-          <h3 id="product8-title">Heart Shaped Diamond</h3>
-          <p id="product8-price" class="price">$6,800</p>
-          <button onclick="alert('Added Heart Shaped Diamond to cart')" aria-label="Buy Heart Shaped Diamond">Buy Now</button>
-        </div>
-      </article>
-    </section>
-
-    <section class="about" id="about" aria-label="About section">
-      <h2>About Elegant Diamonds</h2>
-      <p>At Elegant Diamonds, we meticulously select each gemstone for brilliance and perfection, offering unparalleled luxury and sophistication. Our diamonds are crafted to capture hearts and create memories that last forever. Discover the radiant sparkle of elegance with us.</p>
-    </section>
-
-    <section class="testimonials" aria-label="Customer testimonials">
-      <p>"The quality and sparkle of Elegant Diamonds exceeded my expectations. Truly a luxurious experience!" – Amanda S.</p>
-    </section>
-  </main>
-
-  <footer id="contact" aria-label="Contact information">
-    <p>© 2024 Elegant Diamonds. All rights reserved.</p>
-    <p>
-      <a href="mailto:contact@elegantdiamonds.example" aria-label="Send Email to Elegant Diamonds">Contact Us</a> |
-      <a href="https://www.instagram.com/elegantdiamonds" target="_blank" rel="noopener" aria-label="Open Instagram Profile">Instagram</a> |
-      <a href="https://www.facebook.com/elegantdiamonds" target="_blank" rel="noopener" aria-label="Open Facebook Profile">Facebook</a>
-    </p>
-  </footer>
+<footer role="contentinfo">
+  <p>&copy; 2024 GameTop. All Rights Reserved.</p>
+  <p>
+    <a href="mailto:support@gametop.example" aria-label="Contact support email">Support</a> |
+    <a href="https://twitter.com/gametop" target="_blank" rel="noopener" aria-label="Twitter profile">Twitter</a> |
+    <a href="https://facebook.com/gametop" target="_blank" rel="noopener" aria-label="Facebook profile">Facebook</a>
+  </p>
+</footer>
 </body>
 </html>
-
+&nbsp;
+&nbsp;
