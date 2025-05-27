@@ -1,519 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Multi-Game Diamond Top-Up Store</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-&nbsp;
-&nbsp;
-
-  body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: #121212;
-    color: #eee;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  header {
-    background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
-    padding: 2rem 1rem;
-    text-align: center;
-    box-shadow: 0 4px 8px #000000cc;
-  }
-  header h1 {
-    margin: 0 0 0.25rem;
-    font-weight: 700;
-    font-size: 2.6rem;
-    letter-spacing: 0.07em;
-    color: #f8f8f8;
-    text-shadow: 0 0 10px #74dbffaa;
-  }
-  header p {
-    font-size: 1.15rem;
-    color: #a7c7d9;
-    font-weight: 400;
-  }
-  main {
-    max-width: 1100px;
-    margin: 2rem auto 3rem;
-    padding: 0 1rem;
-  }
-  section.game {
-    margin-bottom: 4rem;
-  }
-  /* Game Title + Logo */
-  .game-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-  .game-logo {
-    width: 52px; height: 52px;
-    filter: drop-shadow(0 0 10px rgba(255 255 255 / 0.3));
-    flex-shrink: 0;
-    user-select: none;
-  }
-  .game-title {
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: #fff;
-    text-shadow: 0 0 10px #76c7ffaa;
-  }
-  /* Different theme colors for games */
-  /* Mobile Legends - orange/purple */
-  section.game.ml .game-title {
-    color: #ff9f1c;
-    text-shadow: 0 0 12px #ff7214aa;
-  }
-  /* Free Fire - yellow/red */
-  section.game.ff .game-title {
-    color: #ffd500;
-    text-shadow: 0 0 12px #ffb700aa;
-  }
-  /* PUBG Mobile - blue/orange */
-  section.game.pubg .game-title {
-    color: #00aaff;
-    text-shadow: 0 0 14px #0077ccaa;
-  }
-  /* Genshin Impact - cyan/purple */
-  section.game.genshin .game-title {
-    color: #5ffaeb;
-    text-shadow: 0 0 15px #3fc6d4aa;
-  }
-  /* Package Grid */
-  .packages {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-    gap: 1.6rem;
-  }
-  /* Package Card base */
-  .card {
-    background: #222;
-    border-radius: 20px;
-    border: 1px solid transparent;
-    box-shadow: 0 0 10px #000000aa;
-    padding: 1.8rem 1.5rem 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #eaeaea;
-    transition: transform 0.28s cubic-bezier(0.25,0.8,0.25,1), box-shadow 0.3s ease, border-color 0.3s ease;
-  }
-  .card:hover {
-    transform: translateY(-12px) scale(1.06);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.85);
-    border-color: currentColor;
-  }
-&nbsp;
-&nbsp;
-
-  /* Diamond icon style and animation */
-  .diamond-icon {
-    font-size: 3.8rem;
-    text-shadow: 
-      0 0 8px currentColor,
-      0 0 15px currentColor;
-    margin-bottom: 1rem;
-    animation: sparkle 3.5s ease-in-out infinite alternate;
-  }
-  @keyframes sparkle {
-    0% {
-      text-shadow: 
-        0 0 6px currentColor,
-        0 0 14px currentColor;
-      transform: scale(1);
-    }
-    100% {
-      text-shadow: 
-        0 0 20px currentColor,
-        0 0 35px currentColor;
-      transform: scale(1.08);
-    }
-  }
-&nbsp;
-&nbsp;
-
-  /* Package textual info */
-  .package-name {
-    font-weight: 700;
-    font-size: 1.5rem;
-    margin-bottom: 0.25rem;
-    letter-spacing: 0.04em;
-  }
-  .diamond-amount {
-    font-weight: 800;
-    font-size: 2.25rem;
-    margin-bottom: 0.6rem;
-  }
-  .price {
-    font-weight: 700;
-    font-size: 1.25rem;
-    margin-bottom: 1.3rem;
-  }
-&nbsp;
-&nbsp;
-
-  /* Buy button base */
-  button.buy-btn {
-    border: none;
-    border-radius: 50px;
-    padding: 0.65rem 2.8rem;
-    font-weight: 700;
-    font-size: 1.05rem;
-    cursor: pointer;
-    box-shadow: 0 6px 14px;
-    transition: all 0.3s ease;
-    letter-spacing: 0.04em;
-    color: white;
-  }
-  button.buy-btn:active {
-    transform: scale(0.95);
-  }
-&nbsp;
-&nbsp;
-
-  /* Individual game themes */
-  /* Mobile Legends */
-  section.game.ml .card {
-    color: #ff9f1c;
-    border-color: #ff9f1c22;
-  }
-  section.game.ml .diamond-icon {
-    color: #ff9f1c;
-  }
-  section.game.ml .package-name {
-    color: #ffbb46;
-  }
-  section.game.ml .diamond-amount {
-    color: #ffbb46;
-  }
-  section.game.ml .price {
-    color: #ff9f1c;
-  }
-  section.game.ml button.buy-btn {
-    background: linear-gradient(135deg, #ff9f1c, #ff6a00);
-    box-shadow: 0 6px 12px #ff9f1caa;
-  }
-  section.game.ml button.buy-btn:hover {
-    background: linear-gradient(135deg, #ffb341, #ff8a15);
-    box-shadow: 0 8px 20px #ffb341cc;
-  }
-&nbsp;
-&nbsp;
-
-  /* Free Fire */
-  section.game.ff .card {
-    color: #ffd500;
-    border-color: #ffd50022;
-  }
-  section.game.ff .diamond-icon {
-    color: #ffd500;
-  }
-  section.game.ff .package-name {
-    color: #fff03a;
-  }
-  section.game.ff .diamond-amount {
-    color: #fff03a;
-  }
-  section.game.ff .price {
-    color: #ffd500;
-  }
-  section.game.ff button.buy-btn {
-    background: linear-gradient(135deg, #ffd500, #ffa800);
-    box-shadow: 0 6px 12px #ffd500aa;
-    color: #3a3000;
-  }
-  section.game.ff button.buy-btn:hover {
-    background: linear-gradient(135deg, #fff03a, #ffc833);
-    box-shadow: 0 8px 20px #fff03aaa;
-    color: #3a3000;
-  }
-&nbsp;
-&nbsp;
-
-  /* PUBG Mobile */
-  section.game.pubg .card {
-    color: #00aaff;
-    border-color: #00aaff22;
-  }
-  section.game.pubg .diamond-icon {
-    color: #00aaff;
-  }
-  section.game.pubg .package-name {
-    color: #4ad0ff;
-  }
-  section.game.pubg .diamond-amount {
-    color: #4ad0ff;
-  }
-  section.game.pubg .price {
-    color: #00aaff;
-  }
-  section.game.pubg button.buy-btn {
-    background: linear-gradient(135deg, #0099e6, #005f99);
-    box-shadow: 0 6px 12px #00aaffaa;
-  }
-  section.game.pubg button.buy-btn:hover {
-    background: linear-gradient(135deg, #00c8ff, #0088cc);
-    box-shadow: 0 8px 24px #00c8ffaa;
-  }
-&nbsp;
-&nbsp;
-
-  /* Genshin Impact */
-  section.game.genshin .card {
-    color: #5ffaeb;
-    border-color: #5ffaeb22;
-  }
-  section.game.genshin .diamond-icon {
-    color: #5ffaeb;
-  }
-  section.game.genshin .package-name {
-    color: #51eee3;
-  }
-  section.game.genshin .diamond-amount {
-    color: #51eee3;
-  }
-  section.game.genshin .price {
-    color: #4ed4cc;
-  }
-  section.game.genshin button.buy-btn {
-    background: linear-gradient(135deg, #3eded3, #00b3a4);
-    box-shadow: 0 6px 14px #3eded3aa;
-  }
-  section.game.genshin button.buy-btn:hover {
-    background: linear-gradient(135deg, #51eee3, #00c7aa);
-    box-shadow: 0 8px 22px #51eee3aa;
-  }
-&nbsp;
-&nbsp;
-
-  footer {
-    text-align: center;
-    padding: 1rem 1rem 2rem;
-    background: #111111cc;
-    font-weight: 400;
-    font-size: 1rem;
-    color: #888;
-    user-select: none;
-  }
-&nbsp;
-&nbsp;
-
-  /* Responsive for smaller */
-  @media (max-width: 460px) {
-    header h1 {
-      font-size: 1.9rem;
-    }
-    .game-title {
-      font-size: 1.5rem;
-    }
-    .packages {
-      grid-template-columns: 1fr;
-      gap: 1.2rem;
-    }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Purchase Offers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 15px;
+            width: calc(25% - 20px);
+            text-align: center;
+        }
+        .hot {
+            background-color: #ffdd57;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .price {
+            font-size: 1.5em;
+            color: #e91e63;
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: gray;
+        }
+        .rewards {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-<header>
-  <h1>Diamond Top-Up Store</h1>
-  <p>Choose your game and get the best diamond top-up packages securely and instantly</p>
-</header>
-<main>
-&nbsp;
-&nbsp;
 
-<section class="game ml" aria-labelledby="ml-title">
-  <div class="game-header">
-    <svg class="game-logo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
-      <defs>
-        <linearGradient id="mlGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#ff9f1c" />
-          <stop offset="1" stop-color="#ff6a00" />
-        </linearGradient>
-      </defs>
-      <circle cx="32" cy="32" r="30" fill="url(#mlGrad)" />
-      <path d="M16 32l24-20v40L16 32z" fill="#fff" />
-    </svg>
-    <h2 id="ml-title" class="game-title">Mobile Legends</h2>
-  </div>
-  <div class="packages" role="list">
-    <article class="card" role="listitem" aria-label="Small Pack - 60 Diamonds Rp 12,000">
-      <div class="diamond-icon" aria-hidden="true">💎</div>
-      <div class="package-name">Small Pack</div>
-      <div class="diamond-amount">60 Diamonds</div>
-      <div class="price">Rp 12.000</div>
-      <button class="buy-btn" onclick="alert('Mobile Legends: 60 Diamonds added to cart!')">Buy Now</button>
-    </article>
-    <article class="card" role="listitem" aria-label="Medium Pack - 250 Diamonds Rp 48,000">
-      <div class="diamond-icon" aria-hidden="true">💎</div>
-      <div class="package-name">Medium Pack</div>
-      <div class="diamond-amount">250 Diamonds</div>
-      <div class="price">Rp 48.000</div>
-      <button class="buy-btn" onclick="alert('Mobile Legends: 250 Diamonds added to cart!')">Buy Now</button>
-    </article>
-    <article class="card" role="listitem" aria-label="Large Pack - 500 Diamonds Rp 90,000">
-      <div class="diamond-icon" aria-hidden="true">💎</div>
-      <div class="package-name">Large Pack</div>
-      <div class="diamond-amount">500 Diamonds</div>
-      <div class="price">Rp 90.000</div>
-      <button class="buy-btn" onclick="alert('Mobile Legends: 500 Diamonds added to cart!')">Buy Now</button>
-    </article>
-    <article class="card" role="listitem" aria-label="Mega Pack - 1000 Diamonds Rp 170,000">
-      <div class="diamond-icon" aria-hidden="true">💎</div>
-      <div class="package-name">Mega Pack</div>
-      <div class="diamond-amount">1000 Diamonds</div>
-      <div class="price">Rp 170.000</div>
-      <button class="buy-btn" onclick="alert('Mobile Legends: 1000 Diamonds added to cart!')">Buy Now</button>
-    </article>
-  </div>
-</section>
-&nbsp;
-&nbsp;
+    <h1>Penawaran Pembelian Diamond</h1>
+    <div class="container">
+        <div class="card">
+            <div class="hot">HOT</div>
+            <h2>100 Diamonds (50+50)</h2>
+            <p>pengisian pertama!</p>
+            <div class="price">Rp. 14.203</div>
+            <div class="old-price">Rp. 16.351</div>
+            <div class="rewards">71 Rewards</div>
+        </div>
 
-<section class="game ff" aria-labelledby="ff-title">
-  <div class="game-header">
-    <svg class="game-logo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
-      <defs>
-        <radialGradient id="ffGrad" cx="0.5" cy="0.5" r="0.5" >
-          <stop offset="0%" stop-color="#fffa00"/>
-          <stop offset="100%" stop-color="#ff9f00"/>
-        </radialGradient>
-      </defs>
-      <circle cx="32" cy="32" r="30" fill="url(#ffGrad)" />
-      <path d="M20 16h24v32H20z" fill="#f96f00" />
-      <path d="M20 16l12 20 12-20" fill="#fff"/>
-    </svg>
-    <h2 id="ff-title" class="game-title">Free Fire</h2>
-  </div>
-  <div class="packages" role="list">
-    <article class="card" role="listitem" aria-label="Small Pack - 50 Diamonds Rp 10,000">
-      <div class="diamond-icon" aria-hidden="true">💠</div>
-      <div class="package-name">Small Pack</div>
-      <div class="diamond-amount">50 Diamonds</div>
-      <div class="price">Rp 10.000</div>
-      <button class="buy-btn" onclick="alert('Free Fire: 50 Diamonds added to cart!')">Buy Now</button>
-    </article>
-    <article class="card" role="listitem" aria-label="Medium Pack - 200 Diamonds Rp 42,000">
-      <div class="diamond-icon" aria-hidden="true">💠</div>
-      <div class="package-name">Medium Pack</div>
-      <div class="diamond-amount">200 Diamonds</div>
-      <div class="price">Rp 42.000</div>
-      <button class="buy-btn" onclick="alert('Free Fire: 200 Diamonds added to cart!')">Buy Now</button>
-    </article>
-    <article class="card" role="listitem" aria-label="Large Pack - 400 Diamonds Rp 80,000">
-      <div class="diamond-icon" aria-hidden="true">💠</div>
-      <div class="package-name">Large Pack</div>
-      <div class="diamond-amount">400 Diamonds</div>
-      <div class="price">Rp 80.000</div>
-      <button class="buy-btn" onclick="alert('Free Fire: 400 Diamonds added to cart!')">Buy Now</button>
-    </article>
-    <article class="card" role="listitem" aria-label="Mega Pack - 900 Diamonds Rp 165,000">
-      <div class="diamond-icon" aria-hidden="true">💠</div>
-      <div class="package-name">Mega Pack</div>
-      <div class="diamond-amount">900 Diamonds</div>
-      <div class="price">Rp 165.000</div>
-      <button class="buy-btn" onclick="alert('Free Fire: 900 Diamonds added to cart!')">Buy Now</button>
-    </article>
-  </div>
-</section>
-&nbsp;
-&nbsp;
+        <div class="card">
+            <div class="hot">HOT</div>
+            <h2>300 Diamonds (150+150)</h2>
+            <p>pengisian pertama!</p>
+            <div class="price">Rp. 42.365</div>
+            <div class="old-price">Rp. 48.559</div>
+            <div class="rewards">211 Rewards</div>
+        </div>
 
-<section class="game pubg" aria-labelledby="pubg-title">
-  <div class="game-header">
-    <svg class="game-logo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
-      <circle cx="32" cy="32" r="30" fill="#005f99" />
-      <path d="M20 20h24v24H20z" fill="#00aaff" />
-      <circle cx="32" cy="32" r="8" stroke="#33d6ff" stroke-width="2"/>
-    </svg>
-    <h2 id="pubg-title" class="game-title">PUBG Mobile</h2>
-  </div>
-  <div class="packages" role="list">
-    <article class="card" role="listitem" aria-label="Small Pack - 70 UC Rp 13,000">
-      <div class="diamond-icon" aria-hidden="true">🔷</div>
-      <div class="package-name">Small Pack</div>
-      <div class="diamond-amount">70 UC</div>
-      <div class="price">Rp 13.000</div>
-      <button class="buy-btn" onclick="alert('PUBG Mobile: 70 UC added to cart!')">Buy Now</button>
-    </article>
-    <article class="card" role="listitem" aria-label="Medium Pack - 280 UC Rp 52,000">
-      <div class="diamond-icon" aria-hidden="true">🔷</div>
-      <div class="package-name">Medium Pack</div>
-      <div class="diamond-amount">280 UC</div>
-      <div class="price">Rp 52.000</div>
-      <button class="buy-btn" onclick="alert('PUBG Mobile: 280 UC added to cart!')">Buy Now</button>
-    </article>
-    <article class="card" role="listitem" aria-label="Large Pack - 580 UC Rp 105,000">
-      <div class="diamond-icon" aria-hidden="true">🔷</div>
-      <div class="package-name">Large Pack</div>
-      <div class="diamond-amount">580 UC</div>
-      <div class="price">Rp 105.000</div>
-      <button class="buy-btn" onclick="alert('PUBG Mobile: 580 UC added to cart!')">Buy Now</button>
-    </article>
-    <article class="card" role="listitem" aria-label="Mega Pack - 1200 UC Rp 210,000">
-      <div class="diamond-icon" aria-hidden="true">🔷</div>
-      <div class="package-name">Mega Pack</div>
-      <div class="diamond-amount">1200 UC</div>
-      <div class="price">Rp 210.000</div>
-      <button class="buy-btn" onclick="alert('PUBG Mobile: 1200 UC added to cart!')">Buy Now</button>
-    </article>
-  </div>
-</section>
-&nbsp;
-&nbsp;
+        <div class="card">
+            <div class="hot">HOT</div>
+            <h2>500 Diamonds (250+250)</h2>
+            <p>pengisian pertama!</p>
+            <div class="price">Rp. 70.632</div>
+            <div class="old-price">Rp. 80.270</div>
+            <div class="rewards">353 Rewards</div>
+        </div>
+        
+        <div class="card">
+            <div class="hot">HOT</div>
+            <h2>1000 Diamonds (500+500)</h2>
+            <p>pengisian pertama!</p>
+            <div class="price">Rp. 142.025</div>
+            <div class="old-price">Rp. 167.973</div>
+            <div class="rewards">710 Rewards</div>
+        </div>
+    </div>
 
-<section class="game genshin" aria-labelledby="genshin-title">
-  <div class="game-header">
-    <svg class="game-logo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
-      <circle cx="32" cy="32" r="30" fill="#21e3dc" />
-      <path d="M32 12 L44 52 L20 52 Z" fill="#40c7bd" />
-      <circle cx="32" cy="32" r="10" fill="#44d8c0" />
-    </svg>
-    <h2 id="genshin-title" class="game-title">Genshin Impact</h2>
-  </div>
-  <div class="packages" role="list">
-    <article class="card" role="listitem" aria-label="Small Pack - 60 Primogems Rp 14,000">
-      <div class="diamond-icon" aria-hidden="true">✨</div>
-      <div class="package-name">Small Pack</div>
-      <div class="diamond-amount">60 Primogems</div>
-      <div class="price">Rp 14.000</div>
-      <button class="buy-btn" onclick="alert('Genshin Impact: 60 Primogems added to cart!')">Buy Now</button>
-    </article>
-    <article class="card" role="listitem" aria-label="Medium Pack - 300 Primogems Rp 62,000">
-      <div class="diamond-icon" aria-hidden="true">✨</div>
-      <div class="package-name">Medium Pack</div>
-      <div class="diamond-amount">300 Primogems</div>
-      <div class="price">Rp 62.000</div>
-      <button class="buy-btn" onclick="alert('Genshin Impact: 300 Primogems added to cart!')">Buy Now</button>
-    </article>
-    <article class="card" role="listitem" aria-label="Large Pack - 650 Primogems Rp 130,000">
-      <div class="diamond-icon" aria-hidden="true">✨</div>
-      <div class="package-name">Large Pack</div>
-      <div class="diamond-amount">650 Primogems</div>
-      <div class="price">Rp 130.000</div>
-      <button class="buy-btn" onclick="alert('Genshin Impact: 650 Primogems added to cart!')">Buy Now</button>
-    </article>
-    <article class="card" role="listitem" aria-label="Mega Pack - 1400 Primogems Rp 270,000">
-      <div class="diamond-icon" aria-hidden="true">✨</div>
-      <div class="package-name">Mega Pack</div>
-      <div class="diamond-amount">1400 Primogems</div>
-      <div class="price">Rp 270.000</div>
-      <button class="buy-btn" onclick="alert('Genshin Impact: 1400 Primogems added to cart!')">Buy Now</button>
-    </article>
-  </div>
-</section>
-</main>
-<footer>
-  &copy; 2024 Multi-Game Diamond Top-Up Store &nbsp;•&nbsp; Contact: support@diamondtopup.com
-</footer>
 </body>
 </html>
-&nbsp;
-&nbsp;
