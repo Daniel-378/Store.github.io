@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topup Game, Pulsa, Token Listrik</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+&nbsp;
+&nbsp;
+
+    <header>
+        <h1>Topup Game, Pulsa, & Token Listrik</h1>
+    </header>
+&nbsp;
+&nbsp;
+
+    <main>
+        <div class="product-container">
+            <div class="product" onclick="alert('Produk 100 Diamonds dipilih!')">
+                <h2>100 Diamonds</h2>
+                <p class="price">Rp 14.203</p>
+                <p class="discount">-13%</p>
+                <p class="rewards">71 Rewards</p>
+            </div>
+&nbsp;
+&nbsp;
+
+            <div class="product" onclick="alert('Produk 300 Diamonds dipilih!')">
+                <h2>300 Diamonds</h2>
+                <p class="price">Rp 42.365</p>
+                <p class="discount">-13%</p>
+                <p class="rewards">211 Rewards</p>
+            </div>
+&nbsp;
+&nbsp;
+
+            <div class="product" onclick="alert('Produk 500 Diamonds dipilih!')">
+                <h2>500 Diamonds</h2>
+                <p class="price">Rp 70.632</p>
+                <p class="discount">-12%</p>
+                <p class="rewards">353 Rewards</p>
+            </div>
+&nbsp;
+&nbsp;
+
+            <div class="product" onclick="alert('Produk 1000 Diamonds dipilih!')">
+                <h2>1000 Diamonds</h2>
+                <p class="price">Rp 142.025</p>
+                <p class="discount">-15%</p>
+                <p class="rewards">710 Rewards</p>
+            </div>
+        </div>
+    </main>
+&nbsp;
+&nbsp;
+
+    <script src="script.js"></script>
+</body>
+</html>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+&nbsp;
+&nbsp;
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+&nbsp;
+&nbsp;
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #6200EE;
+    color: white;
+}
+&nbsp;
+&nbsp;
+
+.product-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+&nbsp;
+&nbsp;
+
+.product {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+&nbsp;
+&nbsp;
+
+.product:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+&nbsp;
+&nbsp;
+
+.price {
+    font-size: 24px;
+    color: #2E7D32;
+}
+&nbsp;
+&nbsp;
+
+.discount {
+    color: red;
+    font-weight: bold;
+}
+&nbsp;
+&nbsp;
+
+.rewards {
+    color: #FFA000;
+}
+// Script JavaScript ini untuk menampilkan pesan saat produk diklik
+// Sudah terintegrasi dalam HTML di bagian onclick
