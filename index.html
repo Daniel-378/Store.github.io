@@ -1,227 +1,532 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Top-up Diamond Fery</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
-    min-height: 100vh;
-    color: #fff;
-  }
-  header {
-    background: rgba(0, 0, 0, 0.25);
-    padding: 2rem 1rem;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-  }
-  header h1 {
-    margin: 0;
-    font-weight: 600;
-    font-size: 2.5rem;
-    letter-spacing: 1.5px;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-  }
-  main {
-    max-width: 480px;
-    margin: 2rem auto 4rem auto;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    padding: 2rem;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-  }
-  label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    user-select: none;
-  }
-  input[type="text"], select {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border-radius: 8px;
-    border: none;
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-    outline: none;
-  }
-  input[type="text"]:focus, select:focus {
-    box-shadow: 0 0 8px #ffd700;
-    background-color: rgba(255 255 255 / 0.25);
-    color: #fff;
-  }
-  .package-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-  .package {
-    background: rgba(255 255 255 / 0.15);
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    text-align: center;
-    cursor: pointer;
-    padding: 1rem 0.5rem;
-    user-select: none;
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
-  .package:hover, .package.selected {
-    background: #ffd700;
-    color: #222;
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px #ffd700;
-  }
-  .package .diamonds {
-    font-weight: 700;
-    font-size: 1.3rem;
-  }
-  .package .price {
-    font-weight: 600;
-    margin-top: 0.3rem;
-    font-size: 1rem;
-    color: #222;
-  }
-  button {
-    background: #ffd700;
-    border: none;
-    font-weight: 600;
-    color: #222;
-    padding: 1rem;
-    width: 100%;
-    border-radius: 10px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    box-shadow: 0 6px 12px #9e7a00;
-    transition: background 0.3s ease;
-  }
-  button:hover {
-    background: #ffec70;
-  }
-  footer {
-    text-align: center;
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.8);
-    padding: 1rem 0;
-    user-select: none;
-  }
-  .message {
-    margin-top: 1rem;
-    font-weight: 600;
-    text-align: center;
-    user-select: none;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ultra Luxury Diamond Top-Up</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,900&family=Poppins:wght@300;600&display=swap');
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0; padding: 0;
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at center, #06040d, #1a1d40 90%);
+      color: #f6ebd2;
+      overflow-x: hidden;
+      position: relative;
+      perspective: 1500px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Particle background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.3) 2px, transparent 7px),
+        radial-gradient(circle at 25% 40%, rgba(255, 223, 0, 0.25) 3px, transparent 8px),
+        radial-gradient(circle at 65% 60%, rgba(255, 239, 165, 0.16) 1.5px, transparent 4px),
+        radial-gradient(circle at 80% 85%, rgba(255, 223, 0, 0.28) 2.5px, transparent 7px),
+        radial-gradient(circle at 91% 10%, rgba(255, 239, 165, 0.24) 5px, transparent 13px);
+      background-repeat: no-repeat;
+      animation: slowDrift 35s linear infinite;
+      z-index: 0;
+      pointer-events: none;
+      filter: drop-shadow(0 0 2px #ffda00aa);
+    }
+
+    @keyframes slowDrift {
+      0% { background-position: 10% 20%, 25% 40%, 65% 60%, 80% 85%, 91% 10%; }
+      50% { background-position: 14% 26%, 22% 50%, 70% 65%, 88% 90%, 93% 12%; }
+      100% { background-position: 10% 20%, 25% 40%, 65% 60%, 80% 85%, 91% 10%; }
+    }
+
+    /* Gold shimmer text effect */
+    .gold-text {
+      display: inline-block;
+      background: linear-gradient(120deg,
+        #ffe679 15%,
+        #f5c32c 40%,
+        #ffd53a 60%,
+        #f5c32c 80%,
+        #ffee88 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      font-weight: 900;
+      position: relative;
+      text-shadow:
+        0 0 8px #ffdb43,
+        0 0 15px #ffdb43;
+      letter-spacing: 0.16em;
+      user-select: none;
+      animation: shine 2.5s linear infinite;
+    }
+
+    @keyframes shine {
+      0%, 100% {
+        background-position: 0% 0%;
+      }
+      50% {
+        background-position: 100% 0%;
+      }
+    }
+
+    header {
+      padding: 3rem 1rem 1rem;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      position: relative;
+      z-index: 10;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 3.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      line-height: 1.1;
+      user-select: none;
+    }
+
+    header p {
+      color: #f0d257cc;
+      font-weight: 500;
+      font-size: 1.3rem;
+      letter-spacing: 0.12em;
+      text-shadow: 0 0 12px #f0ca2833;
+      font-style: italic;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    /* Diamond SVG glowing revolutions */
+    #diamond-wrapper {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 20px;
+      position: relative;
+      z-index: 11;
+      filter: drop-shadow(0 0 4px #ffdb43aa);
+      animation: slowSpin 25s linear infinite;
+    }
+
+    @keyframes slowSpin {
+      0% {
+        transform: rotate(0deg);
+        filter: drop-shadow(0 0 6px #ffd83dcc);
+      }
+      50% {
+        transform: rotate(360deg);
+        filter: drop-shadow(0 0 15px #ffd83dff);
+      }
+      100% {
+        transform: rotate(720deg);
+        filter: drop-shadow(0 0 6px #ffd83dcc);
+      }
+    }
+
+    /* Main container */
+    main {
+      position: relative;
+      max-width: 540px;
+      margin: 2rem auto 5rem;
+      background: rgba(255 255 255 / 0.06);
+      border-radius: 26px;
+      padding: 3rem 2.5rem 3rem;
+      box-shadow:
+        0 0 40px #ffd70066,
+        inset 0 0 24px 2px #ffd700aa;
+      backdrop-filter: blur(22px);
+      border: 2px solid rgba(255, 208, 0, 0.45);
+      z-index: 10;
+    }
+
+    label {
+      color: #fbeea5;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      user-select: none;
+      font-size: 0.95rem;
+      margin-bottom: .7rem;
+      display: block;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 1.2rem 1.3rem;
+      font-size: 1.15rem;
+      border-radius: 20px;
+      border: none;
+      background: rgba(255 255 255 / 0.18);
+      color: #f9f8f5;
+      letter-spacing: 0.05em;
+      box-shadow:
+        inset 0 0 12px #fff8bdcc,
+        inset 0 -3px 6px #fadc4099;
+      outline: none;
+      transition: all 0.4s ease;
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+    }
+    input[type="text"]::placeholder {
+      color: #efd444aa;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+    }
+    input[type="text"]:focus {
+      background: rgba(255 255 255 / 0.35);
+      box-shadow:
+        0 0 16px 3px #ffd700cc,
+        inset 0 0 24px 6px #fff7a5cc,
+        inset 0 0 30px 8px #ffd700cc;
+      color: #fff8aa;
+    }
+
+    .package-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.6rem;
+      margin-top: 1.4rem;
+      margin-bottom: 2.5rem;
+      user-select: none;
+    }
+
+    .package {
+      background: linear-gradient(160deg, #443300cc, #665200aa, #7d6700cc);
+      border-radius: 24px;
+      padding: 1.4rem 0.8rem;
+      text-align: center;
+      color: #f6e79d;
+      cursor: pointer;
+      box-shadow:
+        0 0 12px #ffd700aa,
+        inset 0 0 12px #fae042cc;
+      transition:
+        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.35s ease,
+        background-color 0.35s ease,
+        color 0.25s ease;
+      position: relative;
+      overflow: hidden;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    .package::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: -30%;
+      width: 180%;
+      height: 180%;
+      background: radial-gradient(circle at center, #fffaf0aa, transparent 74%);
+      filter: blur(12px);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .package:hover::before,
+    .package.selected::before {
+      opacity: 1;
+    }
+
+    .package:hover {
+      transform: scale(1.12) translateZ(20px);
+      background:
+        linear-gradient(135deg, #ffd700dd, #d8a600bb);
+      color: #2e1a00;
+      box-shadow:
+        0 0 18px #ffea00ee,
+        0 0 40px #fae042cc,
+        inset 0 0 40px #fff8a8aa;
+      z-index: 11;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+    .package.selected {
+      transform: scale(1.1) translateZ(15px);
+      background:
+        linear-gradient(130deg, #ffe366ee 10%, #d3a300ff 90%);
+      color: #321a00;
+      box-shadow:
+        0 0 24px #ffd929ff,
+        0 0 48px #fde84aff,
+        inset 0 0 56px #ffe368cc;
+      z-index: 15;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .package .diamonds {
+      font-size: 1.7rem;
+      text-shadow: 0 0 8px #9e7a00cc;
+      user-select: none;
+      letter-spacing: 0.05em;
+    }
+
+    .package .price {
+      font-size: 1.15rem;
+      margin-top: 0.3rem;
+      text-shadow: 0 0 6px #9e7a0077;
+      user-select: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 1.15rem 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #3c2100;
+      background: linear-gradient(90deg, #ffef6b 3%, #d2aa00 97%);
+      border-radius: 26px;
+      border: none;
+      box-shadow:
+        0 8px 30px #edcc0099,
+        inset 0 -3px 14px #fedc4399;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    button::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-25deg);
+      transition: left 0.5s ease;
+      pointer-events: none;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #fff875 3%, #ffc400 97%);
+      box-shadow:
+        0 12px 36px #ffbf0099,
+        inset 0 -3px 20px #ffd93f99;
+      color: #411d00;
+    }
+    button:hover::after {
+      left: 125%;
+      transition: left 0.6s ease;
+    }
+
+    button:focus {
+      outline: none;
+      box-shadow:
+        0 0 48px #ffd822ff,
+        inset 0 0 28px #ffd822cc;
+    }
+
+    .message {
+      margin-top: 1.3rem;
+      font-weight: 700;
+      text-align: center;
+      color: #f8de3f;
+      letter-spacing: 0.12em;
+      min-height: 1.4em;
+      user-select: none;
+      text-shadow: 0 0 8px #f8de3fbb;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem 2rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.13em;
+      color: #bba752cc;
+      user-select: none;
+    }
+
+    /* Accessibility outlines for keyboard nav */
+    .package:focus {
+      outline: 3px solid #ffd700cc;
+      outline-offset: 4px;
+      z-index: 20;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      main {
+        margin: 2rem 1rem 4rem;
+        padding: 2.5rem 1.8rem 3rem;
+        border-radius: 22px;
+      }
+      header h1 {
+        font-size: 3rem;
+        letter-spacing: 0.25em;
+      }
+      header p {
+        font-size: 1.1rem;
+      }
+      button {
+        font-size: 1.3rem;
+        padding: 1rem 0;
+      }
+      .package-grid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1>Top-up Diamond Fery</h1>
+    <div id="diamond-wrapper" aria-hidden="true">
+      <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#ffd700" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M12 2L3.5 9.5 7 21h10l3.5-11.5z" />
+      <path d="M12 2v19" />
+      <path d="M7 21l5-10 5 10" />
+      <path d="M3.5 9.5h17" />
+      <path d="M7 7l5 1 5-1" />
+      </svg>
+    </div>
+    <h1 class="gold-text" aria-label="Luxury Diamond Top Up">Luxury Diamond</h1>
+    <p aria-label="Exclusive Top-Up Portal">Exclusive Top-Up Portal</p>
   </header>
 
-  <main>
-    <form id="topupForm">
+  <main role="main">
+    <form id="topupForm" novalidate>
       <label for="gameId">Game User ID</label>
-      <input type="text" id="gameId" name="gameId" placeholder="Enter your game ID" required pattern="[A-Za-z0-9_-]{4,20}" title="4-20 characters: letters, numbers, underscore or hyphen" />
+      <input
+        type="text"
+        id="gameId"
+        name="gameId"
+        autocomplete="off"
+        placeholder="Enter your game ID"
+        required
+        pattern="[A-Za-z0-9_-]{4,20}"
+        title="4-20 characters: letters, numbers, underscore or hyphen"
+        aria-describedby="gameIdHelp"
+      />
+      <small id="gameIdHelp" style="color:#cfb646bb; font-size: 0.75rem; user-select:none;">4-20 chars: letters, digits, underscore, hyphen</small>
 
-      <label>Select Diamond Package</label>
-      <div class="package-grid" id="packageGrid">
-        <div class="package" data-diamonds="50" data-price="5000">
+      <label id="packageLabel" for="packageGrid">Select Diamond Package</label>
+      <div class="package-grid" id="packageGrid" role="list" aria-labelledby="packageLabel" tabindex="0">
+        <div class="package" data-diamonds="50" data-price="5000" tabindex="0" role="listitem" aria-label="50 Diamonds for Rp 5,000">
           <div class="diamonds">50 Diamonds</div>
           <div class="price">Rp 5,000</div>
         </div>
-        <div class="package" data-diamonds="100" data-price="9500">
+        <div class="package" data-diamonds="100" data-price="9500" tabindex="0" role="listitem" aria-label="100 Diamonds for Rp 9,500">
           <div class="diamonds">100 Diamonds</div>
           <div class="price">Rp 9,500</div>
         </div>
-        <div class="package" data-diamonds="250" data-price="22500">
+        <div class="package" data-diamonds="250" data-price="22500" tabindex="0" role="listitem" aria-label="250 Diamonds for Rp 22,500">
           <div class="diamonds">250 Diamonds</div>
           <div class="price">Rp 22,500</div>
         </div>
-        <div class="package" data-diamonds="500" data-price="44000">
+        <div class="package" data-diamonds="500" data-price="44000" tabindex="0" role="listitem" aria-label="500 Diamonds for Rp 44,000">
           <div class="diamonds">500 Diamonds</div>
           <div class="price">Rp 44,000</div>
         </div>
-        <div class="package" data-diamonds="1000" data-price="85000">
+        <div class="package" data-diamonds="1000" data-price="85000" tabindex="0" role="listitem" aria-label="1000 Diamonds for Rp 85,000">
           <div class="diamonds">1000 Diamonds</div>
           <div class="price">Rp 85,000</div>
         </div>
       </div>
 
-      <button type="submit">Top Up Now</button>
-      <div class="message" id="messageArea"></div>
+      <button type="submit" aria-label="Top Up Now Button">Top Up Now</button>
+
+      <div class="message" id="messageArea" role="alert" aria-live="polite" aria-atomic="true"></div>
     </form>
   </main>
 
-  <footer>
-    &copy; 2024 DiamondTopUp. All rights reserved.
+  <footer role="contentinfo">
+    &copy; 2024 LuxuryDiamond. All rights reserved.
   </footer>
 
   <script>
-    (function(){
+    (() => {
       const packageGrid = document.getElementById('packageGrid');
       const packages = packageGrid.querySelectorAll('.package');
-      let selectedPackage = null;
-
-      packages.forEach(pkg => {
-        pkg.addEventListener('click', () => {
-          // Deselect all
-          packages.forEach(p => p.classList.remove('selected'));
-          // Select clicked
-          pkg.classList.add('selected');
-          selectedPackage = pkg;
-          clearMessage();
-        });
-      });
-
-      const form = document.getElementById('topupForm');
       const messageArea = document.getElementById('messageArea');
-
-      function showMessage(msg, success=true) {
-        messageArea.textContent = msg;
-        messageArea.style.color = success ? '#0f0' : '#f44';
-      }
+      const form = document.getElementById('topupForm');
+      let selectedPackage = null;
 
       function clearMessage() {
         messageArea.textContent = '';
       }
 
-      form.addEventListener('submit', event => {
-        event.preventDefault();
+      function showMessage(msg, success = true) {
+        messageArea.innerHTML = msg;
+        messageArea.style.color = success ? '#dbc348' : '#f44336';
+        if(success){
+          messageArea.style.textShadow = '0 0 15px #fbf173cc';
+        } else {
+          messageArea.style.textShadow = '0 0 12px #ff3a3aaa';
+        }
+      }
+
+      packages.forEach(pkg => {
+        pkg.addEventListener('click', () => {
+          packages.forEach(p => p.classList.remove('selected'));
+          pkg.classList.add('selected');
+          selectedPackage = pkg;
+          clearMessage();
+        });
+        pkg.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            pkg.click();
+          }
+        });
+      });
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        clearMessage();
+
         if (!selectedPackage) {
-          showMessage('Please select a diamond package to top up.', false);
+          showMessage('Please select a diamond package.', false);
           return;
         }
+
         const gameId = form.gameId.value.trim();
         if (!gameId) {
           showMessage('Please enter your game user ID.', false);
           return;
         }
-        // Simple pattern check (could rely on input pattern attribute)
         const idPattern = /^[A-Za-z0-9_-]{4,20}$/;
         if (!idPattern.test(gameId)) {
           showMessage('Game ID must be 4-20 characters: letters, numbers, underscore or hyphen.', false);
           return;
         }
+
         const diamonds = selectedPackage.getAttribute('data-diamonds');
         const price = selectedPackage.getAttribute('data-price');
 
-        // Simulate top-up processing delay
-        showMessage('Processing your top-up...', true);
+        showMessage('Processing your ultra luxury top-up...', true);
+
         setTimeout(() => {
-          showMessage(`Success! ${diamonds} diamonds sent to User ID "${gameId}". Total cost: Rp ${Number(price).toLocaleString('id-ID')}.`);
+          showMessage(
+            `🎉 Success! <strong>${diamonds} Diamonds</strong> have been sent to user ID <em>${gameId}</em>. Total cost: Rp ${Number(price).toLocaleString('id-ID')}.`
+          );
           form.reset();
           selectedPackage.classList.remove('selected');
           selectedPackage = null;
-        }, 1500);
+        }, 2300);
       });
-
     })();
   </script>
 </body>
