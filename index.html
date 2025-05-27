@@ -1,534 +1,554 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ultra Luxury Diamond Top-Up</title>
+  <title>Elegant Diamonds - Luxury & Brilliance</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,900&family=Poppins:wght@300;600&display=swap');
-    *, *::before, *::after {
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300;600&display=swap');
+
+    :root {
+      --color-dark: #1a1623;
+      --color-white: #fdfcfb;
+      --color-gold-light: #e7c96d;
+      --color-gold-dark: #b9973e;
+      --color-gray-light: #eee8e4;
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Poppins', sans-serif;
+    }
+
+    * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0; padding: 0;
-      min-height: 100vh;
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at center, #06040d, #1a1d40 90%);
-      color: #f6ebd2;
+      font-family: var(--font-sans);
+      background-color: var(--color-gray-light);
+      color: var(--color-dark);
+      line-height: 1.6;
       overflow-x: hidden;
-      position: relative;
-      perspective: 1500px;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
     }
 
-    /* Particle background */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background:
-        radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.3) 2px, transparent 7px),
-        radial-gradient(circle at 25% 40%, rgba(255, 223, 0, 0.25) 3px, transparent 8px),
-        radial-gradient(circle at 65% 60%, rgba(255, 239, 165, 0.16) 1.5px, transparent 4px),
-        radial-gradient(circle at 80% 85%, rgba(255, 223, 0, 0.28) 2.5px, transparent 7px),
-        radial-gradient(circle at 91% 10%, rgba(255, 239, 165, 0.24) 5px, transparent 13px);
-      background-repeat: no-repeat;
-      animation: slowDrift 35s linear infinite;
-      z-index: 0;
-      pointer-events: none;
-      filter: drop-shadow(0 0 2px #ffda00aa);
+    /* Sticky Transparent Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(26, 22, 35, 0.85);
+      backdrop-filter: saturate(180%) blur(15px);
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
     }
 
-    @keyframes slowDrift {
-      0% { background-position: 10% 20%, 25% 40%, 65% 60%, 80% 85%, 91% 10%; }
-      50% { background-position: 14% 26%, 22% 50%, 70% 65%, 88% 90%, 93% 12%; }
-      100% { background-position: 10% 20%, 25% 40%, 65% 60%, 80% 85%, 91% 10%; }
-    }
-
-    /* Gold shimmer text effect */
-    .gold-text {
-      display: inline-block;
-      background: linear-gradient(120deg,
-        #ffe679 15%,
-        #f5c32c 40%,
-        #ffd53a 60%,
-        #f5c32c 80%,
-        #ffee88 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent;
-      font-weight: 900;
-      position: relative;
-      text-shadow:
-        0 0 8px #ffdb43,
-        0 0 15px #ffdb43;
-      letter-spacing: 0.16em;
+    nav .logo {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      color: var(--color-gold-light);
+      letter-spacing: 4px;
+      cursor: default;
       user-select: none;
-      animation: shine 2.5s linear infinite;
+      text-transform: uppercase;
+      font-weight: 700;
+      text-shadow: 0 0 4px rgba(231, 201, 109, 0.8);
     }
 
-    @keyframes shine {
-      0%, 100% {
-        background-position: 0% 0%;
-      }
-      50% {
-        background-position: 100% 0%;
-      }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
     }
 
-    header {
-      padding: 3rem 1rem 1rem;
-      text-align: center;
-      font-family: 'Playfair Display', serif;
+    nav ul li a {
+      color: var(--color-white);
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      text-decoration: none;
       position: relative;
-      z-index: 10;
+      padding: 0.25rem 0;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--color-gold-light);
+      transition: width 0.3s ease;
+      border-radius: 1px;
+    }
+
+    nav ul li a:hover,
+    nav ul li a:focus {
+      color: var(--color-gold-light);
+    }
+
+    nav ul li a:hover::after,
+    nav ul li a:focus::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    header {
+      height: 90vh;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--color-white);
+      padding: 0 2rem;
+      overflow: hidden;
+    }
+
+    /* Dark overlay */
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(26,22,35,0.75);
+      z-index: 0;
+    }
+
+    header .hero-content {
+      position: relative;
+      max-width: 700px;
+      z-index: 1;
+      font-family: var(--font-serif);
     }
 
     header h1 {
-      margin: 0 0 10px;
-      font-size: 3.5rem;
+      font-size: 4rem;
+      font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.3em;
-      line-height: 1.1;
-      user-select: none;
+      color: var(--color-gold-light);
+      letter-spacing: 8px;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 15px rgba(231, 201, 109, 0.9);
     }
 
     header p {
-      color: #f0d257cc;
-      font-weight: 500;
-      font-size: 1.3rem;
-      letter-spacing: 0.12em;
-      text-shadow: 0 0 12px #f0ca2833;
-      font-style: italic;
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--color-white);
+      margin-bottom: 2.5rem;
+      text-shadow: 0 0 8px rgba(0,0,0,0.7);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold-dark));
+      color: var(--color-dark);
+      border: none;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.85rem 2.5rem;
       text-transform: uppercase;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(231, 201, 109, 0.8);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       user-select: none;
+      letter-spacing: 2px;
     }
 
-    /* Diamond SVG glowing revolutions */
-    #diamond-wrapper {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 20px;
-      position: relative;
-      z-index: 11;
-      filter: drop-shadow(0 0 4px #ffdb43aa);
-      animation: slowSpin 25s linear infinite;
+    .btn-primary:hover,
+    .btn-primary:focus {
+      transform: scale(1.05);
+      box-shadow: 0 8px 30px rgba(231, 201, 109, 1);
+      outline: none;
     }
 
-    @keyframes slowSpin {
-      0% {
-        transform: rotate(0deg);
-        filter: drop-shadow(0 0 6px #ffd83dcc);
-      }
-      50% {
-        transform: rotate(360deg);
-        filter: drop-shadow(0 0 15px #ffd83dff);
-      }
-      100% {
-        transform: rotate(720deg);
-        filter: drop-shadow(0 0 6px #ffd83dcc);
-      }
+    /* Sparkle effect using subtle animated diamond shapes */
+    .sparkle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(white, rgba(231, 201, 109, 0.8));
+      filter: drop-shadow(0 0 8px rgba(231, 201, 109, 0.9));
+      animation: sparkle-move 6s linear infinite;
+      opacity: 0.8;
+      z-index: 0;
+    }
+    .sparkle:nth-child(1) {
+      width: 12px;
+      height: 12px;
+      top: 20%;
+      left: 15%;
+      animation-delay: 0s;
+    }
+    .sparkle:nth-child(2) {
+      width: 10px;
+      height: 10px;
+      top: 40%;
+      left: 80%;
+      animation-delay: 2s;
+    }
+    .sparkle:nth-child(3) {
+      width: 14px;
+      height: 14px;
+      top: 65%;
+      left: 30%;
+      animation-delay: 4s;
+    }
+    @keyframes sparkle-move {
+      0% {transform: translate(0, 0) rotate(0deg) scale(1);}
+      50% {transform: translate(15px, 15px) rotate(180deg) scale(1.25);}
+      100% {transform: translate(0, 0) rotate(360deg) scale(1);}
     }
 
-    /* Main container */
     main {
+      max-width: 1150px;
+      margin: -7rem auto 4rem;
+      padding: 0 1.5rem 5rem;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 30px 50px rgba(0,0,0,0.12);
       position: relative;
-      max-width: 540px;
-      margin: 2rem auto 5rem;
-      background: rgba(255 255 255 / 0.06);
-      border-radius: 26px;
-      padding: 3rem 2.5rem 3rem;
-      box-shadow:
-        0 0 40px #ffd70066,
-        inset 0 0 24px 2px #ffd700aa;
-      backdrop-filter: blur(22px);
-      border: 2px solid rgba(255, 208, 0, 0.45);
       z-index: 10;
     }
 
-    label {
-      color: #fbeea5;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 600;
-      user-select: none;
-      font-size: 0.95rem;
-      margin-bottom: .7rem;
-      display: block;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 1.2rem 1.3rem;
-      font-size: 1.15rem;
-      border-radius: 20px;
-      border: none;
-      background: rgba(255 255 255 / 0.18);
-      color: #f9f8f5;
-      letter-spacing: 0.05em;
-      box-shadow:
-        inset 0 0 12px #fff8bdcc,
-        inset 0 -3px 6px #fadc4099;
-      outline: none;
-      transition: all 0.4s ease;
-      font-weight: 500;
-      font-family: 'Poppins', sans-serif;
-    }
-    input[type="text"]::placeholder {
-      color: #efd444aa;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-    }
-    input[type="text"]:focus {
-      background: rgba(255 255 255 / 0.35);
-      box-shadow:
-        0 0 16px 3px #ffd700cc,
-        inset 0 0 24px 6px #fff7a5cc,
-        inset 0 0 30px 8px #ffd700cc;
-      color: #fff8aa;
-    }
-
-    .package-grid {
+    /* Products Section */
+    section.products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1.6rem;
-      margin-top: 1.4rem;
-      margin-bottom: 2.5rem;
-      user-select: none;
+      grid-template-columns: repeat(auto-fit,minmax(260px, 1fr));
+      gap: 2.75rem;
+      margin-bottom: 4rem;
     }
 
-    .package {
-      background: linear-gradient(160deg, #443300cc, #665200aa, #7d6700cc);
-      border-radius: 24px;
-      padding: 1.4rem 0.8rem;
-      text-align: center;
-      color: #f6e79d;
-      cursor: pointer;
+    .product-card {
+      background: #fbf8f2;
+      border-radius: 15px;
       box-shadow:
-        0 0 12px #ffd700aa,
-        inset 0 0 12px #fae042cc;
-      transition:
-        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-        box-shadow 0.35s ease,
-        background-color 0.35s ease,
-        color 0.25s ease;
-      position: relative;
+        0 2px 10px rgba(0,0,0,0.08),
+        0 0 20px rgba(247, 222, 117, 0.25);
       overflow: hidden;
-      font-weight: 600;
-      user-select: none;
-    }
-
-    .package::before {
-      content: '';
-      position: absolute;
-      top: -40%;
-      left: -30%;
-      width: 180%;
-      height: 180%;
-      background: radial-gradient(circle at center, #fffaf0aa, transparent 74%);
-      filter: blur(12px);
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .package:hover::before,
-    .package.selected::before {
-      opacity: 1;
-    }
-
-    .package:hover {
-      transform: scale(1.12) translateZ(20px);
-      background:
-        linear-gradient(135deg, #ffd700dd, #d8a600bb);
-      color: #2e1a00;
-      box-shadow:
-        0 0 18px #ffea00ee,
-        0 0 40px #fae042cc,
-        inset 0 0 40px #fff8a8aa;
-      z-index: 11;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-    }
-    .package.selected {
-      transform: scale(1.1) translateZ(15px);
-      background:
-        linear-gradient(130deg, #ffe366ee 10%, #d3a300ff 90%);
-      color: #321a00;
-      box-shadow:
-        0 0 24px #ffd929ff,
-        0 0 48px #fde84aff,
-        inset 0 0 56px #ffe368cc;
-      z-index: 15;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-    }
-
-    .package .diamonds {
-      font-size: 1.7rem;
-      text-shadow: 0 0 8px #9e7a00cc;
-      user-select: none;
-      letter-spacing: 0.05em;
-    }
-
-    .package .price {
-      font-size: 1.15rem;
-      margin-top: 0.3rem;
-      text-shadow: 0 0 6px #9e7a0077;
-      user-select: none;
-    }
-
-    button {
-      width: 100%;
-      padding: 1.15rem 0;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #3c2100;
-      background: linear-gradient(90deg, #ffef6b 3%, #d2aa00 97%);
-      border-radius: 26px;
-      border: none;
-      box-shadow:
-        0 8px 30px #edcc0099,
-        inset 0 -3px 14px #fedc4399;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
       cursor: pointer;
-      user-select: none;
-      transition: all 0.35s ease;
       position: relative;
-      overflow: hidden;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
     }
 
-    button::after {
-      content: '';
-      position: absolute;
-      top: 0; left: -75%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(
-        120deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.5) 50%,
-        rgba(255, 255, 255, 0) 100%
-      );
-      transform: skewX(-25deg);
-      transition: left 0.5s ease;
-      pointer-events: none;
-    }
-
-    button:hover {
-      background: linear-gradient(90deg, #fff875 3%, #ffc400 97%);
+    .product-card:hover,
+    .product-card:focus-within {
+      transform: translateY(-10px);
       box-shadow:
-        0 12px 36px #ffbf0099,
-        inset 0 -3px 20px #ffd93f99;
-      color: #411d00;
-    }
-    button:hover::after {
-      left: 125%;
-      transition: left 0.6s ease;
-    }
-
-    button:focus {
+        0 20px 40px rgba(0,0,0,0.12),
+        0 0 35px rgba(247, 222, 117, 0.5);
       outline: none;
-      box-shadow:
-        0 0 48px #ffd822ff,
-        inset 0 0 28px #ffd822cc;
+      z-index: 15;
     }
 
-    .message {
-      margin-top: 1.3rem;
+    .product-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+    }
+
+    .product-card:hover .product-image,
+    .product-card:focus-within .product-image {
+      transform: scale(1.07);
+    }
+
+    .product-info {
+      padding: 1.5rem 1.8rem 2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-info h3 {
+      font-family: var(--font-serif);
       font-weight: 700;
-      text-align: center;
-      color: #f8de3f;
-      letter-spacing: 0.12em;
-      min-height: 1.4em;
+      font-size: 1.4rem;
+      color: var(--color-dark);
+      margin-bottom: 0.35rem;
       user-select: none;
-      text-shadow: 0 0 8px #f8de3fbb;
     }
 
+    .product-info p.price {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--color-gold-dark);
+      margin-bottom: 1.5rem;
+      user-select: none;
+    }
+
+    .product-info button {
+      background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold-dark));
+      border: none;
+      padding: 0.7rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: var(--color-dark);
+      cursor: pointer;
+      font-size: 1rem;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      align-self: flex-start;
+      letter-spacing: 1px;
+      font-family: var(--font-sans);
+      user-select: none;
+      box-shadow: 0 4px 15px rgba(231, 201, 109, 0.7);
+    }
+
+    .product-info button:hover,
+    .product-info button:focus {
+      box-shadow: 0 8px 25px rgba(231, 201, 109, 1);
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    /* About Section */
+    section.about {
+      max-width: 700px;
+      margin: 0 auto 4rem;
+      font-family: var(--font-serif);
+      color: var(--color-dark);
+      text-align: center;
+    }
+
+    section.about h2 {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      margin-bottom: 1rem;
+      user-select: none;
+    }
+
+    section.about p {
+      font-weight: 300;
+      font-size: 1.3rem;
+      line-height: 1.9;
+      color: #3a3a3a;
+      user-select: none;
+      padding: 0 0.5rem;
+    }
+
+    /* Testimonials section */
+    section.testimonials {
+      background: var(--color-dark);
+      color: var(--color-gold-light);
+      padding: 3rem 2rem;
+      border-radius: 20px;
+      max-width: 850px;
+      margin: 0 auto 5rem;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.2rem;
+      text-align: center;
+      position: relative;
+      font-family: var(--font-serif);
+      user-select: none;
+    }
+
+    section.testimonials::before {
+      content: "“";
+      font-size: 6rem;
+      color: rgba(231, 201, 109, 0.3);
+      position: absolute;
+      top: -40px;
+      left: 40px;
+      font-family: var(--font-serif);
+      font-weight: 900;
+      z-index: -1;
+    }
+
+    section.testimonials::after {
+      content: "”";
+      font-size: 6rem;
+      color: rgba(231, 201, 109, 0.3);
+      position: absolute;
+      bottom: -40px;
+      right: 40px;
+      font-family: var(--font-serif);
+      font-weight: 900;
+      z-index: -1;
+    }
+
+    /* Footer */
     footer {
+      background-color: var(--color-dark);
+      color: var(--color-gray-light);
       text-align: center;
-      padding: 1.5rem 1rem 2rem;
+      padding: 2.2rem 1rem;
       font-size: 0.9rem;
-      letter-spacing: 0.13em;
-      color: #bba752cc;
+      letter-spacing: 1.5px;
+      font-family: var(--font-sans);
       user-select: none;
     }
 
-    /* Accessibility outlines for keyboard nav */
-    .package:focus {
-      outline: 3px solid #ffd700cc;
-      outline-offset: 4px;
-      z-index: 20;
+    footer a {
+      color: var(--color-gold-light);
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 0.75rem;
+      transition: color 0.3s ease;
     }
 
-    /* Responsive adjustments */
-    @media (max-width: 480px) {
-      main {
-        margin: 2rem 1rem 4rem;
-        padding: 2.5rem 1.8rem 3rem;
-        border-radius: 22px;
-      }
+    footer a:hover,
+    footer a:focus {
+      color: var(--color-gold-dark);
+      text-decoration: underline;
+      outline: none;
+    }
+
+    @media (max-width: 768px) {
       header h1 {
         font-size: 3rem;
-        letter-spacing: 0.25em;
       }
       header p {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
-      button {
-        font-size: 1.3rem;
-        padding: 1rem 0;
+      nav {
+        padding: 1rem 1.5rem;
       }
-      .package-grid {
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    }
+
+    @media (max-width: 480px) {
+      nav ul {
+        gap: 1.2rem;
+      }
+      nav ul li a {
+        font-size: 0.9rem;
+      }
+      main {
+        margin: -5rem 1rem 3rem;
+        padding: 2rem 1rem 4rem;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div id="diamond-wrapper" aria-hidden="true">
-      <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#ffd700" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round">
-      <path d="M12 2L3.5 9.5 7 21h10l3.5-11.5z" />
-      <path d="M12 2v19" />
-      <path d="M7 21l5-10 5 10" />
-      <path d="M3.5 9.5h17" />
-      <path d="M7 7l5 1 5-1" />
-      </svg>
+  <nav role="navigation" aria-label="Primary navigation">
+    <div class="logo" aria-label="Elegant Diamonds logo">Elegant Diamonds</div>
+    <ul>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header role="banner">
+    <div class="hero-content">
+      <h1>Luxurious Brilliance</h1>
+      <p>Crafted Diamonds That Speak Elegance & Timeless Beauty</p>
+      <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})" aria-label="Shop Now">Shop Now</button>
     </div>
-    <h1 class="gold-text" aria-label="Luxury Diamond Top Up">Luxury Diamond</h1>
-    <p aria-label="Exclusive Top-Up Portal">Exclusive Top-Up Portal</p>
+
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
   </header>
 
-  <main role="main">
-    <form id="topupForm" novalidate>
-      <label for="gameId">Game User ID</label>
-      <input
-        type="text"
-        id="gameId"
-        name="gameId"
-        autocomplete="off"
-        placeholder="Enter your game ID"
-        required
-        pattern="[A-Za-z0-9_-]{4,20}"
-        title="4-20 characters: letters, numbers, underscore or hyphen"
-        aria-describedby="gameIdHelp"
-      />
-      <small id="gameIdHelp" style="color:#cfb646bb; font-size: 0.75rem; user-select:none;">4-20 chars: letters, digits, underscore, hyphen</small>
+  <main>
+    <section class="products" id="products" aria-label="Diamond products">
+      <article tabindex="0" class="product-card" role="group" aria-labelledby="product1-title" aria-describedby="product1-price">
+        <img class="product-image" src="https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?auto=format&fit=crop&w=600&q=80" alt="Classic Round Diamond" loading="lazy"/>
+        <div class="product-info">
+          <h3 id="product1-title">Classic Round Diamond</h3>
+          <p id="product1-price" class="price">$4,500</p>
+          <button onclick="alert('Added Classic Round Diamond to cart')" aria-label="Buy Classic Round Diamond">Buy Now</button>
+        </div>
+      </article>
 
-      <label id="packageLabel" for="packageGrid">Select Diamond Package</label>
-      <div class="package-grid" id="packageGrid" role="list" aria-labelledby="packageLabel" tabindex="0">
-        <div class="package" data-diamonds="50" data-price="5000" tabindex="0" role="listitem" aria-label="50 Diamonds for Rp 5,000">
-          <div class="diamonds">50 Diamonds</div>
-          <div class="price">Rp 5,000</div>
+      <article tabindex="0" class="product-card" role="group" aria-labelledby="product2-title" aria-describedby="product2-price">
+        <img class="product-image" src="https://images.unsplash.com/photo-1512256806717-2ca3b047a88e?auto=format&fit=crop&w=600&q=80" alt="Princess Cut Diamond" loading="lazy"/>
+        <div class="product-info">
+          <h3 id="product2-title">Princess Cut Diamond</h3>
+          <p id="product2-price" class="price">$5,200</p>
+          <button onclick="alert('Added Princess Cut Diamond to cart')" aria-label="Buy Princess Cut Diamond">Buy Now</button>
         </div>
-        <div class="package" data-diamonds="100" data-price="9500" tabindex="0" role="listitem" aria-label="100 Diamonds for Rp 9,500">
-          <div class="diamonds">100 Diamonds</div>
-          <div class="price">Rp 9,500</div>
-        </div>
-        <div class="package" data-diamonds="250" data-price="22500" tabindex="0" role="listitem" aria-label="250 Diamonds for Rp 22,500">
-          <div class="diamonds">250 Diamonds</div>
-          <div class="price">Rp 22,500</div>
-        </div>
-        <div class="package" data-diamonds="500" data-price="44000" tabindex="0" role="listitem" aria-label="500 Diamonds for Rp 44,000">
-          <div class="diamonds">500 Diamonds</div>
-          <div class="price">Rp 44,000</div>
-        </div>
-        <div class="package" data-diamonds="1000" data-price="85000" tabindex="0" role="listitem" aria-label="1000 Diamonds for Rp 85,000">
-          <div class="diamonds">1000 Diamonds</div>
-          <div class="price">Rp 85,000</div>
-        </div>
-      </div>
+      </article>
 
-      <button type="submit" aria-label="Top Up Now Button">Top Up Now</button>
+      <article tabindex="0" class="product-card" role="group" aria-labelledby="product3-title" aria-describedby="product3-price">
+        <img class="product-image" src="https://images.unsplash.com/photo-1513027925551-485383505903?auto=format&fit=crop&w=600&q=80" alt="Emerald Cut Diamond" loading="lazy"/>
+        <div class="product-info">
+          <h3 id="product3-title">Emerald Cut Diamond</h3>
+          <p id="product3-price" class="price">$6,000</p>
+          <button onclick="alert('Added Emerald Cut Diamond to cart')" aria-label="Buy Emerald Cut Diamond">Buy Now</button>
+        </div>
+      </article>
 
-      <div class="message" id="messageArea" role="alert" aria-live="polite" aria-atomic="true"></div>
-    </form>
+      <article tabindex="0" class="product-card" role="group" aria-labelledby="product4-title" aria-describedby="product4-price">
+        <img class="product-image" src="https://images.unsplash.com/photo-1571151629024-6fcd602d1316?auto=format&fit=crop&w=600&q=80" alt="Cushion Cut Diamond" loading="lazy"/>
+        <div class="product-info">
+          <h3 id="product4-title">Cushion Cut Diamond</h3>
+          <p id="product4-price" class="price">$5,800</p>
+          <button onclick="alert('Added Cushion Cut Diamond to cart')" aria-label="Buy Cushion Cut Diamond">Buy Now</button>
+        </div>
+      </article>
+
+      <article tabindex="0" class="product-card" role="group" aria-labelledby="product5-title" aria-describedby="product5-price">
+        <img class="product-image" src="https://images.unsplash.com/photo-1573496773371-1933f7b8f5f0?auto=format&fit=crop&w=600&q=80" alt="Oval Cut Diamond" loading="lazy"/>
+        <div class="product-info">
+          <h3 id="product5-title">Oval Cut Diamond</h3>
+          <p id="product5-price" class="price">$5,500</p>
+          <button onclick="alert('Added Oval Cut Diamond to cart')" aria-label="Buy Oval Cut Diamond">Buy Now</button>
+        </div>
+      </article>
+
+      <article tabindex="0" class="product-card" role="group" aria-labelledby="product6-title" aria-describedby="product6-price">
+        <img class="product-image" src="https://images.unsplash.com/photo-1523639469335-f52969455239?auto=format&fit=crop&w=600&q=80" alt="Marquise Cut Diamond" loading="lazy"/>
+        <div class="product-info">
+          <h3 id="product6-title">Marquise Cut Diamond</h3>
+          <p id="product6-price" class="price">$6,300</p>
+          <button onclick="alert('Added Marquise Cut Diamond to cart')" aria-label="Buy Marquise Cut Diamond">Buy Now</button>
+        </div>
+      </article>
+
+      <article tabindex="0" class="product-card" role="group" aria-labelledby="product7-title" aria-describedby="product7-price">
+        <img class="product-image" src="https://images.unsplash.com/photo-1577546445846-9d1fdb1d6174?auto=format&fit=crop&w=600&q=80" alt="Radiant Cut Diamond" loading="lazy"/>
+        <div class="product-info">
+          <h3 id="product7-title">Radiant Cut Diamond</h3>
+          <p id="product7-price" class="price">$5,900</p>
+          <button onclick="alert('Added Radiant Cut Diamond to cart')" aria-label="Buy Radiant Cut Diamond">Buy Now</button>
+        </div>
+      </article>
+
+      <article tabindex="0" class="product-card" role="group" aria-labelledby="product8-title" aria-describedby="product8-price">
+        <img class="product-image" src="https://images.unsplash.com/photo-1509440159598-cd801b9bf447?auto=format&fit=crop&w=600&q=80" alt="Heart Shaped Diamond" loading="lazy"/>
+        <div class="product-info">
+          <h3 id="product8-title">Heart Shaped Diamond</h3>
+          <p id="product8-price" class="price">$6,800</p>
+          <button onclick="alert('Added Heart Shaped Diamond to cart')" aria-label="Buy Heart Shaped Diamond">Buy Now</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="about" id="about" aria-label="About section">
+      <h2>About Elegant Diamonds</h2>
+      <p>At Elegant Diamonds, we meticulously select each gemstone for brilliance and perfection, offering unparalleled luxury and sophistication. Our diamonds are crafted to capture hearts and create memories that last forever. Discover the radiant sparkle of elegance with us.</p>
+    </section>
+
+    <section class="testimonials" aria-label="Customer testimonials">
+      <p>"The quality and sparkle of Elegant Diamonds exceeded my expectations. Truly a luxurious experience!" – Amanda S.</p>
+    </section>
   </main>
 
-  <footer role="contentinfo">
-    &copy; 2024 LuxuryDiamond. All rights reserved.
+  <footer id="contact" aria-label="Contact information">
+    <p>© 2024 Elegant Diamonds. All rights reserved.</p>
+    <p>
+      <a href="mailto:contact@elegantdiamonds.example" aria-label="Send Email to Elegant Diamonds">Contact Us</a> |
+      <a href="https://www.instagram.com/elegantdiamonds" target="_blank" rel="noopener" aria-label="Open Instagram Profile">Instagram</a> |
+      <a href="https://www.facebook.com/elegantdiamonds" target="_blank" rel="noopener" aria-label="Open Facebook Profile">Facebook</a>
+    </p>
   </footer>
-
-  <script>
-    (() => {
-      const packageGrid = document.getElementById('packageGrid');
-      const packages = packageGrid.querySelectorAll('.package');
-      const messageArea = document.getElementById('messageArea');
-      const form = document.getElementById('topupForm');
-      let selectedPackage = null;
-
-      function clearMessage() {
-        messageArea.textContent = '';
-      }
-
-      function showMessage(msg, success = true) {
-        messageArea.innerHTML = msg;
-        messageArea.style.color = success ? '#dbc348' : '#f44336';
-        if(success){
-          messageArea.style.textShadow = '0 0 15px #fbf173cc';
-        } else {
-          messageArea.style.textShadow = '0 0 12px #ff3a3aaa';
-        }
-      }
-
-      packages.forEach(pkg => {
-        pkg.addEventListener('click', () => {
-          packages.forEach(p => p.classList.remove('selected'));
-          pkg.classList.add('selected');
-          selectedPackage = pkg;
-          clearMessage();
-        });
-        pkg.addEventListener('keydown', e => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            pkg.click();
-          }
-        });
-      });
-
-      form.addEventListener('submit', e => {
-        e.preventDefault();
-        clearMessage();
-
-        if (!selectedPackage) {
-          showMessage('Please select a diamond package.', false);
-          return;
-        }
-
-        const gameId = form.gameId.value.trim();
-        if (!gameId) {
-          showMessage('Please enter your game user ID.', false);
-          return;
-        }
-        const idPattern = /^[A-Za-z0-9_-]{4,20}$/;
-        if (!idPattern.test(gameId)) {
-          showMessage('Game ID must be 4-20 characters: letters, numbers, underscore or hyphen.', false);
-          return;
-        }
-
-        const diamonds = selectedPackage.getAttribute('data-diamonds');
-        const price = selectedPackage.getAttribute('data-price');
-
-        showMessage('Processing your ultra luxury top-up...', true);
-
-        setTimeout(() => {
-          showMessage(
-            `🎉 Success! <strong>${diamonds} Diamonds</strong> have been sent to user ID <em>${gameId}</em>. Total cost: Rp ${Number(price).toLocaleString('id-ID')}.`
-          );
-          form.reset();
-          selectedPackage.classList.remove('selected');
-          selectedPackage = null;
-        }, 2300);
-      });
-    })();
-  </script>
 </body>
 </html>
 
