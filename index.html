@@ -3,92 +3,81 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>GameTop - Ultimate Game Top-Up</title>
+<title>GameTop - Elevate Your Gaming Experience</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@400;600&display=swap');
-&nbsp;
-&nbsp;
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Press+Start+2P&display=swap');
 
   :root {
-    --dark-bg: #0a0a23;
-    --neon-blue: #00f0ff;
-    --neon-pink: #ff0099;
-    --neon-purple: #bb00ff;
-    --text-light: #e6e6ff;
-    --text-dark: #121224;
-    --font-header: 'Orbitron', sans-serif;
+    --dark-bg: #0b0c17;
+    --neon-blue: #02d3f3;
+    --neon-pink: #ff2d95;
+    --neon-purple: #9a4eff;
+    --text-light: #e3e3e3;
+    --text-muted: #777;
+    --font-header: 'Press Start 2P', cursive;
     --font-body: 'Montserrat', sans-serif;
+    --shadow-glow: 0 0 12px var(--neon-pink);
+    --btn-shadow: 0 0 30px var(--neon-pink);
   }
-&nbsp;
-&nbsp;
 
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
-&nbsp;
-&nbsp;
 
   body {
-    background: var(--dark-bg);
+    background: linear-gradient(135deg, #0b0c17 0%, #121329 50%, #0b0c17 100%);
     color: var(--text-light);
     font-family: var(--font-body);
-    line-height: 1.5;
     overflow-x: hidden;
+    scroll-behavior: smooth;
+    min-height: 100vh;
   }
-&nbsp;
-&nbsp;
 
   header {
     position: sticky;
     top: 0;
-    background: rgba(15,15,50,0.95);
-    backdrop-filter: blur(10px);
-    padding: 1.3rem 2rem;
+    background: rgba(11, 12, 23, 0.95);
+    backdrop-filter: saturate(180%) blur(10px);
+    padding: 1.2rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    box-shadow: 0 0 15px var(--neon-purple);
+    box-shadow: 0 0 12px var(--neon-purple);
   }
-&nbsp;
-&nbsp;
 
   header .logo {
     font-family: var(--font-header);
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: var(--neon-pink);
-    letter-spacing: 5px;
+    letter-spacing: 8px;
     user-select: none;
-    cursor: default;
     text-transform: uppercase;
     text-shadow:
       0 0 8px var(--neon-pink),
-      0 0 20px var(--neon-pink),
-      0 0 30px var(--neon-pink);
+      0 0 30px var(--neon-pink),
+      0 0 60px var(--neon-pink);
   }
-&nbsp;
-&nbsp;
 
   nav ul {
     list-style: none;
     display: flex;
-    gap: 2.2rem;
+    gap: 2.5rem;
   }
-&nbsp;
-&nbsp;
 
   nav ul li a {
     color: var(--text-light);
-    font-weight: 600;
-    letter-spacing: 1.2px;
+    font-weight: 700;
     font-size: 1rem;
     text-decoration: none;
+    letter-spacing: 1.4px;
     position: relative;
     padding: 0.25rem 0;
     transition: color 0.3s ease;
   }
+
   nav ul li a::after {
     content: '';
     position: absolute;
@@ -100,271 +89,258 @@
     border-radius: 1px;
     transition: width 0.3s ease;
   }
+
   nav ul li a:hover,
   nav ul li a:focus {
     color: var(--neon-pink);
+    outline: none;
   }
+
   nav ul li a:hover::after,
   nav ul li a:focus::after {
     width: 100%;
   }
-&nbsp;
-&nbsp;
+
 
   /* Hero Section */
   .hero {
     position: relative;
-    min-height: 80vh;
+    min-height: 90vh;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0 2rem;
     background: url('https://images.unsplash.com/photo-1605362482129-34cd3955d21b?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+    overflow: hidden;
   }
   .hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(10, 10, 35, 0.8);
+    background: linear-gradient(135deg, rgba(9,9,27,0.85), rgba(18,18,34,0.85));
     z-index: 0;
-    mix-blend-mode: multiply;
   }
   .hero-content {
     position: relative;
     z-index: 1;
-    max-width: 700px;
+    max-width: 750px;
     margin: 0 auto;
   }
   .hero-content h1 {
     font-family: var(--font-header);
-    font-size: 4.5rem;
+    font-size: 5rem;
     color: var(--neon-blue);
     text-transform: uppercase;
-    letter-spacing: 10px;
-    margin-bottom: 1rem;
+    letter-spacing: 12px;
+    margin-bottom: 1.2rem;
     text-shadow:
-      0 0 6px var(--neon-blue),
-      0 0 20px var(--neon-blue),
-      0 0 40px var(--neon-blue);
-    animation: flicker 3s infinite alternate;
+      0 0 8px var(--neon-blue),
+      0 0 30px var(--neon-blue),
+      0 0 60px var(--neon-blue);
+    animation: flicker 2.5s infinite alternate;
   }
   .hero-content p {
-    font-size: 1.3rem;
-    font-weight: 400;
+    font-size: 1.4rem;
+    font-weight: 500;
     margin-bottom: 3rem;
     color: var(--text-light);
-    text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+    text-shadow: 0 0 20px rgba(2, 211, 255, 0.8);
   }
-&nbsp;
-&nbsp;
 
   @keyframes flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    0%, 20%, 40%, 60%, 80%, 100% {
       opacity: 1;
       text-shadow:
-      0 0 6px var(--neon-blue),
-      0 0 20px var(--neon-blue),
-      0 0 40px var(--neon-blue);
+        0 0 8px var(--neon-blue),
+        0 0 25px var(--neon-blue),
+        0 0 40px var(--neon-blue);
     }
-    20%, 22%, 24%, 55% {
+    10%, 30%, 50%, 70%, 90% {
       opacity: 0.8;
       text-shadow: none;
     }
   }
-&nbsp;
-&nbsp;
 
   .btn-primary {
     background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
     border: none;
     color: var(--text-light);
     font-weight: 700;
-    font-size: 1.25rem;
-    padding: 1rem 3rem;
-    border-radius: 50px;
+    font-size: 1.3rem;
+    padding: 1rem 4rem;
+    border-radius: 60px;
     cursor: pointer;
     box-shadow:
-      0 0 8px var(--neon-pink),
-      0 0 20px var(--neon-purple);
-    transition: box-shadow 0.3s ease, transform 0.25s ease;
+      0 0 15px var(--neon-pink),
+      0 0 45px var(--neon-purple);
+    transition: box-shadow 0.4s ease, transform 0.3s ease;
     user-select: none;
-    user-drag: none;
   }
   .btn-primary:hover,
   .btn-primary:focus {
-    transform: scale(1.05);
+    transform: scale(1.07);
     box-shadow:
-      0 0 15px var(--neon-pink),
-      0 0 40px var(--neon-purple);
+      0 0 30px var(--neon-pink),
+      0 0 60px var(--neon-purple);
     outline: none;
   }
-&nbsp;
-&nbsp;
 
   /* Features Section */
   .features {
-    max-width: 1100px;
-    margin: 5rem auto 4rem;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 2rem;
+    max-width: 1150px;
+    margin: 6rem auto 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(270px, 1fr));
+    gap: 2.5rem;
     padding: 0 1rem;
   }
-&nbsp;
-&nbsp;
 
   .feature-card {
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 18px;
-    border: 1.8px solid var(--neon-purple);
+    border-radius: 20px;
+    border: 2px solid var(--neon-purple);
     color: var(--text-light);
-    padding: 2rem;
-    flex: 1 1 220px;
-    max-width: 280px;
+    padding: 2.5rem 2rem 2rem;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     user-select: none;
     cursor: default;
+    box-shadow: 0 0 10px rgba(154, 78, 255, 0.3);
   }
   .feature-card:hover,
   .feature-card:focus {
     box-shadow:
-      0 0 15px var(--neon-pink),
-      0 0 40px var(--neon-purple);
-    transform: translateY(-8px);
+      0 0 25px var(--neon-pink),
+      0 0 70px var(--neon-purple);
+    transform: translateY(-10px);
     outline: none;
   }
-&nbsp;
-&nbsp;
 
   .feature-icon {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 1rem;
+    width: 75px;
+    height: 75px;
+    margin-bottom: 1.25rem;
     fill: var(--neon-pink);
-    filter: drop-shadow(0 0 5px var(--neon-pink));
+    filter: drop-shadow(0 0 8px var(--neon-pink));
   }
   .feature-card h3 {
     font-family: var(--font-header);
-    font-size: 1.4rem;
-    margin-bottom: 0.8rem;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 8px var(--neon-pink);
   }
   .feature-card p {
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: #ccc;
   }
-&nbsp;
-&nbsp;
 
   /* Popular Games Section */
   .popular-games {
-    max-width: 1100px;
-    margin: 5rem auto 5rem;
+    max-width: 1150px;
+    margin: 5rem auto 6rem;
     padding: 0 1rem;
     text-align: center;
   }
   .popular-games h2 {
     font-family: var(--font-header);
-    font-size: 3rem;
-    margin-bottom: 2rem;
+    font-size: 3.4rem;
+    margin-bottom: 2.5rem;
     color: var(--neon-purple);
     user-select: none;
     text-shadow:
-      0 0 6px var(--neon-purple),
-      0 0 20px var(--neon-purple);
+      0 0 8px var(--neon-purple),
+      0 0 25px var(--neon-purple),
+      0 0 45px var(--neon-purple);
   }
   .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(140px, 1fr));
-    gap: 2.2rem;
+    grid-template-columns: repeat(auto-fit,minmax(150px, 1fr));
+    gap: 2.8rem;
     justify-items: center;
   }
-&nbsp;
-&nbsp;
 
   .game-card {
     position: relative;
-    width: 140px;
-    border-radius: 15px;
-    padding: 1.25rem;
-    background: rgba(255,255,255,0.05);
-    border: 2px solid transparent;
+    width: 150px;
+    border-radius: 20px;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.07);
+    border: 2.5px solid transparent;
     box-shadow:
-      0 0 10px rgba(0, 255, 255, 0.1);
+      0 0 14px rgba(255, 45, 149, 0.15);
     cursor: pointer;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.35s ease;
     user-select: none;
-    outline-offset: 4px;
+    outline-offset: 5px;
   }
   .game-card:hover,
   .game-card:focus {
     border-color: var(--neon-pink);
     box-shadow:
-      0 0 25px var(--neon-pink),
-      0 0 50px var(--neon-purple);
-    transform: scale(1.1);
+      0 0 30px var(--neon-pink),
+      0 0 70px var(--neon-purple);
+    transform: scale(1.13);
     outline: none;
   }
   .game-card img {
     width: 100%;
-    border-radius: 15px;
-    margin-bottom: 1rem;
+    border-radius: 20px;
+    margin-bottom: 1.35rem;
     user-select: none;
     user-drag: none;
+    filter: drop-shadow(0 0 6px var(--neon-pink));
   }
   .game-card p {
-    font-weight: 600;
-    font-size: 1.1rem;
+    font-weight: 700;
+    font-size: 1.15rem;
     text-transform: uppercase;
     color: var(--neon-blue);
     text-shadow:
-      0 0 6px var(--neon-blue),
-      0 0 15px var(--neon-blue);
+      0 0 8px var(--neon-blue),
+      0 0 20px var(--neon-blue),
+      0 0 40px var(--neon-blue);
   }
-&nbsp;
-&nbsp;
 
   /* Call to Action Section */
   .cta {
-    max-width: 700px;
-    margin: 4rem auto 6rem;
+    max-width: 720px;
+    margin: 5rem auto 7rem;
     text-align: center;
   }
   .cta h2 {
     font-family: var(--font-header);
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 3.6rem;
+    margin-bottom: 1.3rem;
     color: var(--neon-pink);
     text-shadow:
-      0 0 10px var(--neon-pink),
-      0 0 30px var(--neon-pink);
+      0 0 15px var(--neon-pink),
+      0 0 45px var(--neon-purple);
     user-select: none;
   }
   .cta p {
-    font-size: 1.3rem;
-    font-weight: 400;
-    margin-bottom: 2.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 2.8rem;
     color: var(--text-light);
   }
-&nbsp;
-&nbsp;
 
   /* Footer */
   footer {
-    background: rgba(15, 15, 50, 0.95);
+    background: rgba(11, 11, 23, 0.95);
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 2.5rem 1rem;
     font-size: 0.9rem;
     color: var(--text-light);
     user-select: none;
   }
   footer a {
     color: var(--neon-purple);
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
-    margin: 0 0.8rem;
+    margin: 0 0.9rem;
     transition: color 0.3s ease;
   }
   footer a:hover,
@@ -373,24 +349,22 @@
     outline: none;
     text-decoration: underline;
   }
-&nbsp;
-&nbsp;
 
   /* Responsive */
   @media (max-width: 900px) {
     .features {
-      flex-direction: column;
-      align-items: center;
+      grid-template-columns: 1fr;
+      gap: 3rem 0;
+      max-width: 350px;
+      margin: 6rem auto 5rem;
     }
     .hero-content h1 {
-      font-size: 3.5rem;
+      font-size: 3.8rem;
     }
     .popular-games h2 {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
     }
   }
-&nbsp;
-&nbsp;
 
   @media (max-width: 480px) {
     .hero-content h1 {
@@ -404,6 +378,10 @@
     }
     .games-grid {
       grid-template-columns: repeat(auto-fit,minmax(120px, 1fr));
+    }
+    .game-card {
+      width: 130px;
+      padding: 1rem;
     }
   }
 </style>
@@ -419,43 +397,37 @@
     </ul>
   </nav>
 </header>
-&nbsp;
-&nbsp;
 
 <section class="hero" role="banner" aria-label="Main introduction">
   <div class="hero-content">
     <h1>GameTop</h1>
-    <p>Instant, safe & easy game top-ups with exclusive deals for gamers worldwide</p>
+    <p>Instant, secure, and exclusive top-ups. Level up your gaming now with GameTop!</p>
     <button class="btn-primary" onclick="alert('Redirecting to Top-Up Service')" aria-label="Start top-up now">Start Now</button>
   </div>
 </section>
-&nbsp;
-&nbsp;
 
 <section id="features" class="features" aria-label="Key Features">
   <article class="feature-card" tabindex="0">
     <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30"/></svg>
     <h3>Instant Delivery</h3>
-    <p>Receive your game credits immediately with our lightning-fast service.</p>
+    <p>Receive game credits in seconds with our lightning-fast service.</p>
   </article>
   <article class="feature-card" tabindex="0">
     <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true"><path d="M6 32h52"/></svg>
     <h3>Secure Payments</h3>
-    <p>Top-up safely with trusted payment gateways and encrypted transactions.</p>
+    <p>Top-up safely with encrypted payments and trusted gateways.</p>
   </article>
   <article class="feature-card" tabindex="0">
     <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true"><path d="M20 44l12-24 12 24"/></svg>
     <h3>Wide Game Selection</h3>
-    <p>We support popular games from all genres to meet all your gaming needs.</p>
+    <p>Support for your favorite games across all genres and platforms.</p>
   </article>
   <article class="feature-card" tabindex="0">
     <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6v52"/></svg>
     <h3>24/7 Support</h3>
-    <p>Our dedicated support team is ready to help you anytime, anywhere.</p>
+    <p>Expert customer service ready to assist you anytime.</p>
   </article>
 </section>
-&nbsp;
-&nbsp;
 
 <section id="games" class="popular-games" aria-label="Popular games to top up">
   <h2>Popular Games</h2>
@@ -486,16 +458,12 @@
     </div>
   </div>
 </section>
-&nbsp;
-&nbsp;
 
 <section id="cta" class="cta" aria-label="Call To Action">
-  <h2>Level Up Your Game Now!</h2>
-  <p>Join thousands of gamers worldwide who trust GameTop for the fastest top-ups with exclusive deals.</p>
+  <h2>Level Up Your Game Today!</h2>
+  <p>Join millions of gamers trusting GameTop for secure, fast, and exclusive top-ups worldwide.</p>
   <button class="btn-primary" onclick="alert('Redirecting to registration page')" aria-label="Sign up now">Sign Up Now</button>
 </section>
-&nbsp;
-&nbsp;
 
 <footer role="contentinfo">
   <p>&copy; 2024 GameTop. All Rights Reserved.</p>
@@ -507,5 +475,4 @@
 </footer>
 </body>
 </html>
-&nbsp;
-&nbsp;
+
